@@ -1,0 +1,286 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  width: 900px;
+  margin: 50px auto;
+  box-shadow: 19px 20px 57px 0 #33333347;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  height: auto;
+  overflow: hidden;
+}
+
+.topArea .avater img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+.topArea .avater {
+  width: 140px;
+  height: 140px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+.nameDeg h2 {
+  font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+.nameDeg {
+  margin-bottom: 24px;
+}
+
+.nameDeg h4 {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.sideBar {
+  background: #afaeac;
+  padding: 10px 34px;
+  position: relative;
+}
+
+.sideBarWidget {
+  margin-bottom: 25px;
+}
+
+.sideBarWidget h3 {
+  font-size: 19px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+.sideBarWidget {
+  margin-bottom: 25px;
+}
+
+.sideBarWidget h3 {
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.singleInfo {
+  display: grid;
+  grid-template-columns: 13% 87%;
+  margin-bottom: 1px;
+  font-size: 13px;
+  font-weight: normal;
+  align-items: center;
+  line-height: 22px;
+}
+
+.sideBarWidget ul {
+  margin-left: 18px;
+}
+
+.sideBarWidget ul li {
+  font-size: 13px;
+  padding: 3px 0;
+}
+.singleLink {
+  display: grid;
+  font-size: 13px;
+  font-weight: normal;
+  grid-template-columns: 12% 88%;
+  line-height: 25px;
+  align-items: center;
+}
+.mainContent {
+  display: flex;
+  margin-top: 25px;
+  position: relative;
+}
+.singleExp.edu h3 {
+  margin-top: 6px;
+  font-size: 15px;
+}
+.mainContentContent {
+  padding: 0px 35px;
+}
+
+.achievements {
+  margin-left: 17px;
+}
+
+.achievements h2 {
+  margin-bottom: 4px;
+  color: green;
+  font-weight: 500;
+  font-size: 14px !important;
+  margin-top: 9px;
+  font-style: italic;
+}
+.singleInfoArea .personalProjects p {
+  font-size: 12px;
+  line-height: 18px;
+}
+.achievements ul li {
+  font-size: 13px;
+}
+
+.singleInfoArea {
+  margin-top: 10px;
+}
+
+.singleInfoArea p {
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 300;
+  color: #5e5e5e;
+}
+.rightBorder {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 3px;
+  height: 70%;
+  background: #333333a6;
+  transform: translate(2px, -50%);
+}
+.singleExp h3 {
+  font-size: 17px;
+  margin-bottom: 2px;
+  margin-top: 10px;
+  color: #353535;
+}
+
+.singleExp h3 span {
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  padding-left: 15px;
+  margin-top: 5px;
+}
+.singleExp.edu p {
+  margin-top: 10px;
+}
+
+.singleExp h4 {
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  color: #373737;
+  margin-bottom: 5px;
+}
+
+.singleExp h5 {
+  font-size: 12px;
+  font-weight: 500;
+}
+.singleLink img {
+  width: 20px;
+  height: 20px;
+}
+.workingTechnologies {
+  width: 100%;
+  height: 159px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background: #333; */
+  padding-top: 64px;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
+.singleLink span a {
+  color: #000;
+  text-decoration: none;
+}
+
+.workingTechnologies img {
+  height: 40px;
+  margin: 0 10px;
+  max-width: 60px;
+}
+.workingTechnologies img.jsLog {
+  width: 55px;
+}
+.printBoktobbo {
+  position: fixed;
+  left: 0;
+  top: 30%;
+  padding: 20px;
+  width: 167px;
+}
+
+.printBoktobbo button {
+  color: #fff;
+  border-radius: 3px;
+  background: #333;
+  padding: 7px 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.singleInfoArea h2 {
+  font-size: 18px;
+}
+
+.singleExp ul {
+  padding-left: 11px;
+  list-style: circle;
+}
+
+.singleExp ul li {
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 10px;
+  color: #444;
+}
+
+.printBoktobbo p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 10px;
+  color: #666;
+}
+/******** Print Mode **********/
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  .wrapper * {
+    visibility: visible;
+  }
+  .wrapper {
+    width: 100%;
+    height: auto;
+    /*position:absolute;*/
+    top: 0px;
+    bottom: 0px;
+    margin: 0 auto !important;
+    margin-top: 0px !important;
+    /*overflow: hidden;*/
+  }
+  .nameDeg h2 {
+    font-size: 18px;
+  }
+  .pagebreak {
+    clear: both;
+    page-break-after: always;
+  }
+}
