@@ -152,7 +152,7 @@ function renderProjects(projects) {
         <div class="mt-5 flex flex-wrap gap-1.5">
           ${p.stack.map((s) => `<span class="text-[11px] px-2 py-0.5 rounded-sm border rule">${escapeHTML(s)}</span>`).join("")}
         </div>
-        <a href="https://${escapeHTML(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-[13px] ulink">
+        <a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-[13px] ulink">
           <span class="bk">$</span> open ${escapeHTML(p.link)} <span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -196,7 +196,7 @@ function renderWriting(items) {
         <p class="mt-1.5 text-[14px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
       </div>
       <div class="col-span-12 md:col-span-2 md:text-right">
-        <a href="https://${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[13px] ulink">
+        <a href="${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[13px] ulink">
           read.md <span aria-hidden="true">↗</span>
         </a>
       </div>
