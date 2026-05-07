@@ -553,6 +553,7 @@ section {
   font-size: 13px;
   color: var(--primary);
   margin-bottom: 8px;
+  text-decoration: none;
 }
 .timeline-desc {
   font-size: 13px;
