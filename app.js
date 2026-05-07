@@ -16,6 +16,9 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
   );
 });
 
+document.querySelector("[data-footer-year]").textContent =
+  new Date().getFullYear();
+
 const escapeHTML = (s) =>
   String(s).replace(
     /[&<>"']/g,
@@ -93,7 +96,7 @@ function renderExperience(jobs) {
       </div>
       <div class="col-span-12 md:col-span-9">
         <h3 class="text-[18px] font-bold text-ink dark:text-nightInk">
-          ${escapeHTML(j.role)} <span class="text-mute dark:text-nightMute font-normal">@</span> <span class="text-primary">${escapeHTML(j.company)}</span>
+          ${escapeHTML(j.role)} <span class="text-mute dark:text-nightMute font-normal">@</span> ${j.href ? `<a href="${escapeHTML(j.href)}" target="_blank" rel="noopener noreferrer" class="text-primary ulink">${escapeHTML(j.company)}</a>` : `<span class="text-primary">${escapeHTML(j.company)}</span>`}
         </h3>
         <p class="mt-1 text-[13px] text-mute dark:text-nightMute">${escapeHTML(j.location)}</p>
         <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[14px] text-body dark:text-nightBody">

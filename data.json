@@ -29,7 +29,7 @@
     },
     {
       "category": "Frameworks",
-      "items": ["Laravel", "React", "Next.js", "Django"]
+      "items": ["Laravel", "React", "Next.js", "Tanstack Start", "Django"]
     },
     {
       "category": "Frontend",
@@ -55,6 +55,7 @@
       "location": "Dhaka",
       "period": "Sep 2025 — Present",
       "current": true,
+      "href": "https://kiwiiit.com/",
       "highlights": [
         "Designed and implemented scalable authentication systems using Sanctum and JWT.",
         "Optimized complex database queries, reducing response times from 3s to 500ms.",
@@ -62,7 +63,7 @@
         "Built real-time systems using Laravel Reverb, Pusher, SMS, and email pipelines.",
         "Implemented queue-based architecture with Laravel Horizon for background jobs.",
         "Developed automated reporting systems (PDF, CSV, Excel exports).",
-        "Engineered presigned upload pipelines using Cloudflare R2.",
+        "AI automation: Whatsapp auto replay with self hosted n8n and automated product SEO generation.",
         "Managed production infrastructure, CI/CD pipelines, and VPS deployments."
       ]
     },
@@ -72,6 +73,7 @@
       "location": "Dhaka",
       "period": "Feb 2025 — Aug 2025",
       "current": false,
+      "href": "https://www.consultechbd.com/",
       "highlights": [
         "Developed ERP modules with role-based access control and scalable architecture.",
         "Built high-performance UI components handling datasets of 100k+ records.",
@@ -86,6 +88,7 @@
       "location": "Dhaka",
       "period": "Jan 2024 — Jan 2025",
       "current": false,
+      "href": "https://digiwinners.com/en",
       "highlights": [
         "Contributed to ERP system development with modular and reusable components.",
         "Improved frontend performance and usability for large-scale data interfaces.",
@@ -105,7 +108,7 @@
         "Discord bot integration for instant alerting and incident notifications.",
         "Optimized data fetching and caching with Prisma and TanStack Query."
       ],
-      "link": "github.com/tanzid64",
+      "link": "https://github.com/tanzid64/ping-panda",
       "year": "2025",
       "category": "SaaS"
     },
@@ -120,23 +123,24 @@
         "Optimized large document parsing and rendering pipelines.",
         "Secure API layer with usage limits and protected endpoints."
       ],
-      "link": "github.com/tanzid64",
+      "link": "https://github.com/tanzid64/pdf-craft",
       "year": "2024",
       "category": "AI / SaaS"
     },
     {
-      "name": "Big Data Import / Export",
-      "subtitle": "High-volume data pipeline system",
-      "stack": ["Django", "Celery", "Redis", "PostgreSQL"],
+      "name": "Faith Journey Bangladesh",
+      "subtitle": "A single vendor e-commerce platform for cloathing products in Bangladesh.",
+      "stack": ["Laravel", "Mysql", "Redis", "Next.js", "Tailwind CSS", "Inertia.js", "Shadcn UI"],
       "highlights": [
-        "High-volume CSV import/export pipelines for large datasets.",
-        "Asynchronous job processing using Celery and Redis.",
-        "Automation scripts for data ingestion, cleanup, and validation.",
-        "Secure reporting delivery system with email integration and job tracking."
+        "Home page builder.",
+        "Product & Order management system with real-time updates. And order audit log with user activity tracking.",
+        "Various report generation, realtime notification implementation for order processing.",
+        "Payment system integration (SSLCommerz).",
+        "Data optimization for product listing and search with Redis caching and optimized database queries."
       ],
-      "link": "github.com/tanzid64",
-      "year": "2024",
-      "category": "Data Engineering"
+      "link": "https://faithjourneybd.com/",
+      "year": "2026",
+      "category": "Software Development"
     }
   ],
   "writing": [
@@ -144,19 +148,19 @@
       "title": "Permission Architecture: RBAC in Scalable Systems",
       "summary": "Designed and explained scalable role-based access control for SaaS applications — covering structure, trade-offs, and implementation patterns.",
       "topic": "Architecture",
-      "link": "medium.com/@tanzid64"
+      "link": "https://tanzid64.medium.com/permission-architecture-problem-solution-2116217f7736"
     },
     {
       "title": "Async Processing with Queues & Laravel Horizon",
       "summary": "Explored queue-based architecture for handling background jobs — improving system performance and reliability in production environments.",
       "topic": "Backend",
-      "link": "medium.com/@tanzid64"
+      "link": "https://tanzid64.medium.com/the-hidden-backbone-of-scalable-apps-async-tasks-queues-processes-laravel-horizon-explained-fc9afea91beb"
     },
     {
       "title": "Load Balancing Strategies for High-Traffic Systems",
       "summary": "Analyzed L4/L7 load balancing techniques, algorithms, and scaling patterns — and their role in building resilient distributed systems.",
       "topic": "Systems",
-      "link": "medium.com/@tanzid64"
+      "link": "https://tanzid64.medium.com/how-load-balancers-keep-the-internet-alive-6a516792abc7"
     }
   ],
   "principles": [
