@@ -1,0 +1,189 @@
+{
+  "profile": {
+    "name": "Md. Tanzid Haque",
+    "title": "Software Developer",
+    "tagline": "Full-stack engineer building scalable SaaS, ERP, and e-commerce systems with Laravel, React, and Next.js.",
+    "summary": "Full Stack Software Developer with 2+ years of experience building production-grade systems. Strong focus on performance optimization, clean architecture, and rapid product delivery. Experienced in modern AI-assisted development workflows — leveraging automation and developer tooling to ship faster while maintaining high-quality codebases.",
+    "location": "Dhaka, Bangladesh",
+    "email": "tanzid3@gmail.com",
+    "phone": "+880 17089-15045",
+    "website": "tanzid.dev",
+    "social": {
+      "github": "github.com/tanzid64",
+      "medium": "medium.com/@tanzid64",
+      "linkedin": "linkedin.com/in/tanzid64"
+    },
+    "yearsOfExperience": "2+",
+    "availability": "Open to work"
+  },
+  "stats": [
+    { "value": "3+", "label": "Years shipping production code" },
+    { "value": "3", "label": "Companies, ERP & SaaS focus" },
+    { "value": "100k+", "label": "Records handled per UI" },
+    { "value": "6×", "label": "Faster query response (3s → 500ms)" }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["PHP", "JavaScript", "TypeScript", "Python"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["Laravel", "React", "Next.js", "Django"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["Inertia.js", "Tailwind CSS", "Shadcn UI", "Bootstrap", "TanStack Query/Table/Form", "React Hook Form"]
+    },
+    {
+      "category": "Databases",
+      "items": ["MySQL", "PostgreSQL", "MongoDB", "Redis"]
+    },
+    {
+      "category": "Tools & DevOps",
+      "items": ["Git", "VPS", "GitHub Actions", "Postman", "Docker", "CI/CD"]
+    },
+    {
+      "category": "AI & Modern Dev",
+      "items": ["Laravel AI SDK", "OpenAI APIs", "AI-assisted workflows", "Vibe coding"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Laravel Developer",
+      "company": "Kiwii IT",
+      "location": "Dhaka",
+      "period": "Sep 2025 — Present",
+      "current": true,
+      "highlights": [
+        "Designed and implemented scalable authentication systems using Sanctum and JWT.",
+        "Optimized complex database queries, reducing response times from 3s to 500ms.",
+        "Integrated secure payment gateways including SSLCOMMERZ and Stripe.",
+        "Built real-time systems using Laravel Reverb, Pusher, SMS, and email pipelines.",
+        "Implemented queue-based architecture with Laravel Horizon for background jobs.",
+        "Developed automated reporting systems (PDF, CSV, Excel exports).",
+        "Engineered presigned upload pipelines using Cloudflare R2.",
+        "Managed production infrastructure, CI/CD pipelines, and VPS deployments."
+      ]
+    },
+    {
+      "role": "Junior Software Developer",
+      "company": "Consultech Solutions BD Ltd",
+      "location": "Dhaka",
+      "period": "Feb 2025 — Aug 2025",
+      "current": false,
+      "highlights": [
+        "Developed ERP modules with role-based access control and scalable architecture.",
+        "Built high-performance UI components handling datasets of 100k+ records.",
+        "Designed analytics dashboards for distributors and operational teams.",
+        "Implemented real-time updates and reporting systems.",
+        "Built internal chat system using Laravel Reverb."
+      ]
+    },
+    {
+      "role": "Junior Software Developer",
+      "company": "Digiwinners",
+      "location": "Dhaka",
+      "period": "Jan 2024 — Jan 2025",
+      "current": false,
+      "highlights": [
+        "Contributed to ERP system development with modular and reusable components.",
+        "Improved frontend performance and usability for large-scale data interfaces.",
+        "Assisted in reporting and dashboard feature development."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "PingPanda",
+      "subtitle": "SaaS Website Monitoring Platform",
+      "stack": ["Next.js", "Prisma", "TanStack Query", "Webhooks", "Discord API"],
+      "highlights": [
+        "Real-time monitoring platform for uptime, API health, and event tracking.",
+        "Secure API key system with request validation and rate control.",
+        "Webhook ingestion system for external integrations.",
+        "Discord bot integration for instant alerting and incident notifications.",
+        "Optimized data fetching and caching with Prisma and TanStack Query."
+      ],
+      "link": "github.com/tanzid64",
+      "year": "2025",
+      "category": "SaaS"
+    },
+    {
+      "name": "PDF Craft",
+      "subtitle": "AI-Powered PDF Chat SaaS",
+      "stack": ["Next.js", "OpenAI", "Stripe", "Vector DB", "React-PDF"],
+      "highlights": [
+        "AI-powered document chat using semantic search and embeddings.",
+        "Vector-based retrieval pipeline for accurate contextual responses.",
+        "Subscription billing and access control with Stripe.",
+        "Optimized large document parsing and rendering pipelines.",
+        "Secure API layer with usage limits and protected endpoints."
+      ],
+      "link": "github.com/tanzid64",
+      "year": "2024",
+      "category": "AI / SaaS"
+    },
+    {
+      "name": "Big Data Import / Export",
+      "subtitle": "High-volume data pipeline system",
+      "stack": ["Django", "Celery", "Redis", "PostgreSQL"],
+      "highlights": [
+        "High-volume CSV import/export pipelines for large datasets.",
+        "Asynchronous job processing using Celery and Redis.",
+        "Automation scripts for data ingestion, cleanup, and validation.",
+        "Secure reporting delivery system with email integration and job tracking."
+      ],
+      "link": "github.com/tanzid64",
+      "year": "2024",
+      "category": "Data Engineering"
+    }
+  ],
+  "writing": [
+    {
+      "title": "Permission Architecture: RBAC in Scalable Systems",
+      "summary": "Designed and explained scalable role-based access control for SaaS applications — covering structure, trade-offs, and implementation patterns.",
+      "topic": "Architecture",
+      "link": "medium.com/@tanzid64"
+    },
+    {
+      "title": "Async Processing with Queues & Laravel Horizon",
+      "summary": "Explored queue-based architecture for handling background jobs — improving system performance and reliability in production environments.",
+      "topic": "Backend",
+      "link": "medium.com/@tanzid64"
+    },
+    {
+      "title": "Load Balancing Strategies for High-Traffic Systems",
+      "summary": "Analyzed L4/L7 load balancing techniques, algorithms, and scaling patterns — and their role in building resilient distributed systems.",
+      "topic": "Systems",
+      "link": "medium.com/@tanzid64"
+    }
+  ],
+  "principles": [
+    {
+      "title": "Clean architecture",
+      "body": "Code that other people can read, extend, and trust. Modular boundaries over clever abstractions."
+    },
+    {
+      "title": "Performance as a feature",
+      "body": "Profile first, optimize what matters. Reduced a 3-second query to 500ms by reading the right indexes, not by adding cache."
+    },
+    {
+      "title": "Ship, then iterate",
+      "body": "Product-oriented thinking — balance speed, quality, and user impact. Get something real in front of users early."
+    },
+    {
+      "title": "AI as leverage",
+      "body": "Modern dev workflows treat AI as a power tool — for codegen, review, and exploration — not a replacement for engineering judgment."
+    }
+  ],
+  "education": {
+    "degree": "B.Sc. in Electrical and Electronic Engineering",
+    "school": "Green University of Bangladesh",
+    "gpa": "3.49 / 4.00"
+  },
+  "languages": [
+    { "name": "Bangla", "level": "Native" },
+    { "name": "English", "level": "Academic" }
+  ]
+}

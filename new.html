@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en" class="">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tanzid Haque — Software Developer</title>
+<meta name="description" content="Full-stack developer building scalable SaaS, ERP, and e-commerce systems with Laravel, React, and Next.js." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Configure Tailwind with our editorial palette + dark mode
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],
+          sans:  ['Montserrat', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          mono:  ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          // Light (parchment) palette
+          paper:      '#f6f1e7',  // canvas
+          paperSoft:  '#efe7d6',  // soft band
+          paperCard:  '#ebe2cf',  // card
+          paperEdge:  '#dcd0b6',  // hairline
+          ink:        '#1a1a18',  // headings
+          inkBody:    '#3a3833',  // body
+          inkMuted:   '#7a766b',  // muted
+
+          // Dark (ink) palette
+          night:      '#11110f',  // canvas dark
+          nightSoft:  '#16151295',
+          nightCard:  '#1c1b17',  // card dark
+          nightEdge:  '#2a2823',  // hairline dark
+          cream:      '#f0e8d6',  // text on dark
+          creamMuted: '#9a9486',
+
+          // Accent — earthy rust (oklch-derived). Same hue across modes.
+          rust:       '#b8593a',
+          rustDeep:   '#a0aaff',
+          rustLight:  '#d97a55',
+        },
+        spacing: {
+          '18': '4.5rem',
+          '30': '7.5rem',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+
+  /* Editorial display tightening */
+  .display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .display-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .num {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  /* Slow theme cross-fade */
+  html, body, .themed { transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease; }
+
+  /* Subtle paper grain (light) */
+  body.paper-grain::before {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    background-image:
+      radial-gradient(circle at 25% 30%, rgba(150, 120, 80, 0.04) 0, transparent 40%),
+      radial-gradient(circle at 75% 70%, rgba(180, 90, 60, 0.03) 0, transparent 50%);
+  }
+
+  /* Custom underline for inline links */
+  .editorial-link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 200ms ease;
+  }
+  .editorial-link:hover {
+    background-size: 100% 2px;
+  }
+
+  /* Marquee for skills strip */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee 50s linear infinite;
+    will-change: transform;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+
+  /* Hairline rule */
+  .rule { border-color: #dcd0b6; }
+  html.dark .rule { border-color: #2a2823; }
+
+  /* Numbered list markers in mono */
+  .num-marker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(8px); transition: opacity 600ms ease, transform 600ms ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Asterisk glyph spinner on hover */
+  .ast { display: inline-block; transition: transform 600ms ease; }
+  a:hover > .ast, button:hover > .ast { transform: rotate(180deg); }
+
+  /* Bigger first-letter on summary */
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 4.5em;
+    float: left;
+    line-height: 0.85;
+    padding: 0.08em 0.08em 0 0;
+    color: var(--accent, #b8593a);
+  }
+
+  /* Section number ribbon */
+  .ribbon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+
+<body class="paper-grain bg-paper text-inkBody dark:bg-night dark:text-cream font-sans antialiased" style="font-family: Oswald">
+
+<!-- ───────────────────────────── NAV ───────────────────────────── -->
+<header class="relative z-30">
+  <nav class="max-w-[1240px] mx-auto px-6 md:px-10 py-6 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <!-- Asterisk-like radial mark, original 6-spoke -->
+      <svg class="ast" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="11" y1="2"  x2="11" y2="20" />
+          <line x1="2"  y1="11" x2="20" y2="11" />
+          <line x1="4.5" y1="4.5" x2="17.5" y2="17.5" />
+          <line x1="17.5" y1="4.5" x2="4.5" y2="17.5" />
+        </g>
+      </svg>
+      <span class="display text-[20px] tracking-tight text-ink dark:text-cream">Tanzid<span class="text-rust">.</span></span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-[13px] text-inkBody/80 dark:text-cream/70">
+      <li><a class="hover:text-ink dark:hover:text-cream transition" href="#work">Work</a></li>
+      <li><a class="hover:text-ink dark:hover:text-cream transition" href="#projects">Projects</a></li>
+      <li><a class="hover:text-ink dark:hover:text-cream transition" href="#writing">Writing</a></li>
+      <li><a class="hover:text-ink dark:hover:text-cream transition" href="#principles">Approach</a></li>
+      <li><a class="hover:text-ink dark:hover:text-cream transition" href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button id="theme-toggle" aria-label="Toggle dark mode"
+              class="h-10 w-10 grid place-items-center rounded-full border rule hover:border-ink/40 dark:hover:border-cream/40 transition">
+        <!-- sun -->
+        <svg class="block dark:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <!-- moon -->
+        <svg class="hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <a href="#contact"
+         class="hidden sm:inline-flex items-center gap-2 h-10 px-4 rounded-full bg-ink text-paper dark:bg-cream dark:text-night text-[13px] font-medium hover:bg-rust hover:text-white dark:hover:bg-rust dark:hover:text-white transition">
+        Let's talk
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+  <div class="border-b rule"></div>
+</header>
+
+<main id="top" class="relative z-10">
+
+  <!-- ───────────────────────── HERO ─────────────────────────── -->
+  <section class="max-w-[1240px] mx-auto px-6 md:px-10 pt-12 md:pt-20 pb-16 md:pb-24">
+    <div class="grid grid-cols-12 gap-6 md:gap-10">
+
+      <!-- meta column -->
+      <div class="col-span-12 md:col-span-3 order-2 md:order-1">
+        <div class="space-y-8">
+          <div>
+            <p class="label text-inkMuted dark:text-creamMuted mb-2">Vol. 01 — Portfolio</p>
+            <p class="label text-inkMuted dark:text-creamMuted">Dhaka · Bangladesh</p>
+          </div>
+
+          <div class="border-t rule pt-6">
+            <p class="label text-inkMuted dark:text-creamMuted mb-3">Currently</p>
+            <p class="text-[15px] text-ink dark:text-cream leading-snug">
+              Laravel Developer at <span class="display-italic">Kiwii&nbsp;IT</span>, shipping production SaaS &amp; ERP systems.
+            </p>
+            <span class="inline-flex items-center gap-2 mt-3 label text-rust" style="color: rgb(123, 135, 245)">
+              <span class="h-1.5 w-1.5 rounded-full bg-rust animate-pulse"></span>
+              <span data-bind="profile.availability" style="color: rgb(123, 135, 245)">Open to work</span>
+            </span>
+          </div>
+
+          <div class="border-t rule pt-6">
+            <p class="label text-inkMuted dark:text-creamMuted mb-3">Index</p>
+            <ol class="space-y-1.5 text-[13px] text-inkBody dark:text-cream/80">
+              <li class="flex justify-between"><a href="#work" class="hover:text-rust"><span class="num-marker text-inkMuted dark:text-creamMuted mr-3">01</span>Experience</a></li>
+              <li class="flex justify-between"><a href="#projects" class="hover:text-rust"><span class="num-marker text-inkMuted dark:text-creamMuted mr-3">02</span>Projects</a></li>
+              <li class="flex justify-between"><a href="#writing" class="hover:text-rust"><span class="num-marker text-inkMuted dark:text-creamMuted mr-3">03</span>Writing</a></li>
+              <li class="flex justify-between"><a href="#principles" class="hover:text-rust"><span class="num-marker text-inkMuted dark:text-creamMuted mr-3">04</span>Approach</a></li>
+              <li class="flex justify-between"><a href="#contact" class="hover:text-rust"><span class="num-marker text-inkMuted dark:text-creamMuted mr-3">05</span>Contact</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- masthead column -->
+      <div class="col-span-12 md:col-span-9 order-1 md:order-2">
+        <p class="label text-inkMuted dark:text-creamMuted mb-6">— Software developer, Dhaka</p>
+
+        <h1 class="display text-ink dark:text-cream text-[64px] sm:text-[88px] md:text-[124px] lg:text-[148px] leading-[0.92]">
+          Tanzid<br>
+          <span class="display-italic text-rust" style="font-family: &quot;Courier New&quot;; color: rgb(123, 135, 245)">Haque</span>
+        </h1>
+
+        <div class="grid grid-cols-12 gap-6 md:gap-10 mt-10 md:mt-14">
+          <div class="col-span-12 md:col-span-7">
+            <p class="dropcap text-[18px] md:text-[20px] leading-[1.55] text-inkBody dark:text-cream/85" data-bind="profile.summary"></p>
+          </div>
+
+          <div class="col-span-12 md:col-span-5">
+            <p class="label text-inkMuted dark:text-creamMuted mb-4">By the numbers</p>
+            <ul id="stats" class="grid grid-cols-2 gap-y-6 gap-x-4"></ul>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center gap-3">
+          <a href="#projects"
+             class="inline-flex items-center gap-2 h-12 px-5 rounded-full bg-rust text-white text-[14px] font-medium hover:bg-rustDeep transition">
+            See selected work
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact"
+             class="inline-flex items-center gap-2 h-12 px-5 rounded-full border rule text-ink dark:text-cream text-[14px] font-medium hover:bg-paperCard dark:hover:bg-nightCard transition">
+            <span class="__cf_email__" data-cfemail="ccb8ada2b6a5a8ff8caba1ada5a0e2afa3a1">[email&#160;protected]</span>
+          </a>
+          <a href="uploads/Resume_Md_Tanzid_Haque.pdf" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 h-12 px-5 text-ink dark:text-cream text-[14px] font-medium editorial-link">
+            Download résumé (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────── SKILLS MARQUEE ────────────────── -->
+  <section class="border-y rule bg-paperSoft/60 dark:bg-nightCard/60 themed overflow-hidden">
+    <div class="marquee py-5">
+      <div id="marquee-track" class="marquee-track flex gap-10 whitespace-nowrap"></div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── WORK ─────────────────────────── -->
+  <section id="work" class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+    <header class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="ribbon text-rust">§ 01 / Experience</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="display text-[44px] md:text-[64px] text-ink dark:text-cream">
+          Three years of <span class="display-italic">shipping</span> production systems.
+        </h2>
+        <p class="mt-6 text-[17px] text-inkBody dark:text-cream/75 max-w-2xl">
+          ERP modules, SaaS platforms, real-time dashboards, payment integrations — built end-to-end with Laravel, React, and Next.js.
+        </p>
+      </div>
+    </header>
+
+    <ol id="experience" class="border-t rule"></ol>
+  </section>
+
+  <!-- ─────────────────── PROJECTS ────────────────────── -->
+  <section id="projects" class="border-t rule bg-paperSoft/50 dark:bg-nightCard/40 themed">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+      <header class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+        <div class="col-span-12 md:col-span-3">
+          <p class="ribbon text-rust">§ 02 / Selected projects</p>
+        </div>
+        <div class="col-span-12 md:col-span-9">
+          <h2 class="display text-[44px] md:text-[64px] text-ink dark:text-cream">
+            Things I&rsquo;ve <span class="display-italic">built</span> — ends to ends.
+          </h2>
+        </div>
+      </header>
+
+      <div id="projects-list" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── WRITING ─────────────────────── -->
+  <section id="writing" class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+    <header class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="ribbon text-rust">§ 03 / Writing</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="display text-[44px] md:text-[64px] text-ink dark:text-cream">
+          Notes on <span class="display-italic">systems</span> &amp; design.
+        </h2>
+      </div>
+    </header>
+
+    <div id="writing-list" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- ──────────────────── PRINCIPLES ─────────────────────── -->
+  <section id="principles" class="border-t rule bg-night text-cream themed">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+      <header class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+        <div class="col-span-12 md:col-span-3">
+          <p class="ribbon text-rustLight">§ 04 / Engineering approach</p>
+        </div>
+        <div class="col-span-12 md:col-span-9">
+          <h2 class="display text-[44px] md:text-[64px] text-cream">
+            How I <span class="display-italic" style="color:#d97a55">work</span>.
+          </h2>
+        </div>
+      </header>
+
+      <ol id="principles-list" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10"></ol>
+    </div>
+  </section>
+
+  <!-- ──────────────────── SKILLS DETAIL ─────────────────────── -->
+  <section class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+    <header class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-3">
+        <p class="ribbon text-rust">§ Toolkit</p>
+      </div>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="display text-[44px] md:text-[64px] text-ink dark:text-cream">
+          The <span class="display-italic">stack</span>, in plain text.
+        </h2>
+      </div>
+    </header>
+
+    <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-paperEdge dark:bg-nightEdge border rule"></div>
+  </section>
+
+  <!-- ────────────────── CONTACT / CTA ─────────────────── -->
+  <section id="contact" class="border-t rule">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-10 py-24 md:py-30">
+      <div class="grid grid-cols-12 gap-6 md:gap-10 items-end">
+        <div class="col-span-12 md:col-span-8">
+          <p class="ribbon text-rust mb-6">§ 05 / Get in touch</p>
+          <h2 class="display text-[56px] sm:text-[80px] md:text-[112px] text-ink dark:text-cream leading-[0.95]">
+            Have a system that needs <span class="display-italic text-rust">shipping</span>?
+          </h2>
+          <p class="mt-8 text-[17px] text-inkBody dark:text-cream/75 max-w-xl">
+            I&rsquo;m available for full-stack contract or full-time roles. Best for backend-heavy SaaS, ERP, and platform work.
+          </p>
+        </div>
+
+        <div class="col-span-12 md:col-span-4">
+          <ul class="border-t rule divide-y divide-paperEdge dark:divide-nightEdge">
+            <li class="py-4 flex items-center justify-between gap-4">
+              <span class="label text-inkMuted dark:text-creamMuted">Email</span>
+              <a href="/cdn-cgi/l/email-protection#fc889d92869598cfbc9b919d9590d29f9391" class="editorial-link text-ink dark:text-cream text-[15px]"><span class="__cf_email__" data-cfemail="6d190c031704095e2d0a000c0401430e0200">[email&#160;protected]</span></a>
+            </li>
+            <li class="py-4 flex items-center justify-between gap-4">
+              <span class="label text-inkMuted dark:text-creamMuted">Phone</span>
+              <a href="tel:+8801708915045" class="editorial-link text-ink dark:text-cream text-[15px]">+880 17089-15045</a>
+            </li>
+            <li class="py-4 flex items-center justify-between gap-4">
+              <span class="label text-inkMuted dark:text-creamMuted">GitHub</span>
+              <a href="https://github.com/tanzid64" target="_blank" rel="noopener" class="editorial-link text-ink dark:text-cream text-[15px]">@tanzid64</a>
+            </li>
+            <li class="py-4 flex items-center justify-between gap-4">
+              <span class="label text-inkMuted dark:text-creamMuted">LinkedIn</span>
+              <a href="https://linkedin.com/in/tanzid64" target="_blank" rel="noopener" class="editorial-link text-ink dark:text-cream text-[15px]">in/tanzid64</a>
+            </li>
+            <li class="py-4 flex items-center justify-between gap-4">
+              <span class="label text-inkMuted dark:text-creamMuted">Medium</span>
+              <a href="https://medium.com/@tanzid64" target="_blank" rel="noopener" class="editorial-link text-ink dark:text-cream text-[15px]">@tanzid64</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── FOOTER ─────────────────────── -->
+  <footer class="border-t rule bg-night text-cream/80">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-10 py-12">
+      <div class="grid grid-cols-12 gap-6 md:gap-10">
+        <div class="col-span-12 md:col-span-6">
+          <div class="flex items-center gap-3 mb-3">
+            <svg width="18" height="18" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <g stroke="#d97a55" stroke-width="1.6" stroke-linecap="round">
+                <line x1="11" y1="2"  x2="11" y2="20" />
+                <line x1="2"  y1="11" x2="20" y2="11" />
+                <line x1="4.5" y1="4.5" x2="17.5" y2="17.5" />
+                <line x1="17.5" y1="4.5" x2="4.5" y2="17.5" />
+              </g>
+            </svg>
+            <span class="display text-cream text-[18px]">Tanzid Haque</span>
+          </div>
+          <p class="text-[13px] text-creamMuted max-w-md">
+            Full-stack developer based in Dhaka. Designed and built by hand in 2026 — typeset in Playfair Display &amp; Montserrat.
+          </p>
+        </div>
+        <div class="col-span-12 md:col-span-3">
+          <p class="label text-creamMuted mb-3">Education</p>
+          <p class="text-[13px] text-cream/85" id="footer-education"></p>
+        </div>
+        <div class="col-span-12 md:col-span-3">
+          <p class="label text-creamMuted mb-3">Languages</p>
+          <p class="text-[13px] text-cream/85" id="footer-languages"></p>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-nightEdge flex flex-col sm:flex-row gap-2 justify-between text-[12px] text-creamMuted">
+        <span>© 2026 Md. Tanzid Haque — All rights reserved.</span>
+        <span class="font-mono">v1.0 · last set May 2026</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ───────────────── SCRIPTS ───────────────── -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // 1) Theme: persisted, system-default, instant set in <head> earlier? do here pre-paint via inline.
+  (function(){
+    const saved = localStorage.getItem('theme');
+    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = saved ? saved === 'dark' : sysDark;
+    document.documentElement.classList.toggle('dark', dark);
+  })();
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const root = document.documentElement;
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  // 2) Render data
+  const escapeHTML = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function deepGet(obj, path) {
+    return path.split('.').reduce((a, k) => (a == null ? a : a[k]), obj);
+  }
+
+  async function loadData() {
+    const res = await fetch('data.json');
+    if (!res.ok) throw new Error('data.json not found');
+    return res.json();
+  }
+
+  function renderBindings(data) {
+    document.querySelectorAll('[data-bind]').forEach(el => {
+      const v = deepGet(data, el.getAttribute('data-bind'));
+      if (v != null) el.textContent = v;
+    });
+  }
+
+  function renderStats(stats) {
+    const el = document.getElementById('stats');
+    el.innerHTML = stats.map(s => `
+      <li class="border-t rule pt-3">
+        <div class="num text-ink dark:text-cream text-[44px] md:text-[52px] leading-none">${escapeHTML(s.value)}</div>
+        <div class="mt-2 text-[13px] text-inkMuted dark:text-creamMuted leading-snug">${escapeHTML(s.label)}</div>
+      </li>
+    `).join('');
+  }
+
+  function renderMarquee(skills) {
+    const all = skills.flatMap(g => g.items);
+    const node = document.getElementById('marquee-track');
+    const block = all.map(s => `
+      <span class="inline-flex items-center gap-3 text-inkMuted dark:text-creamMuted">
+        <span class="display-italic text-[28px] md:text-[34px] leading-none text-ink dark:text-cream">${escapeHTML(s)}</span>
+        <span class="text-rust text-[18px] leading-none">✦</span>
+      </span>
+    `).join('');
+    node.innerHTML = block + block; // duplicated for seamless marquee
+  }
+
+  function renderExperience(jobs) {
+    const el = document.getElementById('experience');
+    el.innerHTML = jobs.map((j, i) => `
+      <li class="border-b rule py-10 md:py-14 grid grid-cols-12 gap-6 md:gap-10 group">
+        <div class="col-span-12 md:col-span-3">
+          <p class="num-marker text-inkMuted dark:text-creamMuted mb-2">No. ${String(i+1).padStart(2,'0')}</p>
+          <p class="text-[13px] text-inkMuted dark:text-creamMuted">${escapeHTML(j.period)}</p>
+          ${j.current ? `<span class="inline-flex items-center gap-2 mt-2 label text-rust">
+            <span class="h-1.5 w-1.5 rounded-full bg-rust animate-pulse"></span>Current
+          </span>` : ''}
+        </div>
+        <div class="col-span-12 md:col-span-9">
+          <h3 class="display text-[28px] md:text-[40px] text-ink dark:text-cream leading-[1.05]">
+            ${escapeHTML(j.role)} <span class="text-inkMuted dark:text-creamMuted">at</span> <span class="display-italic text-rust">${escapeHTML(j.company)}</span>
+          </h3>
+          <p class="mt-2 text-[13px] text-inkMuted dark:text-creamMuted">${escapeHTML(j.location)}</p>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2.5 text-[15px] text-inkBody dark:text-cream/80">
+            ${j.highlights.map(h => `
+              <li class="flex gap-3">
+                <span class="text-rust mt-2 shrink-0">—</span>
+                <span>${escapeHTML(h)}</span>
+              </li>`).join('')}
+          </ul>
+        </div>
+      </li>
+    `).join('');
+  }
+
+  function renderProjects(projects) {
+    const el = document.getElementById('projects-list');
+    el.innerHTML = projects.map((p, i) => `
+      <article class="bg-paper dark:bg-nightCard rounded-2xl border rule p-6 md:p-10 grid grid-cols-12 gap-6 md:gap-10 themed">
+        <div class="col-span-12 md:col-span-1">
+          <span class="num text-rust text-[44px] leading-none">${String(i+1).padStart(2,'0')}</span>
+        </div>
+        <div class="col-span-12 md:col-span-5">
+          <p class="label text-inkMuted dark:text-creamMuted mb-3">${escapeHTML(p.category)} · ${escapeHTML(p.year)}</p>
+          <h3 class="display text-[34px] md:text-[44px] text-ink dark:text-cream leading-[1.02]">${escapeHTML(p.name)}</h3>
+          <p class="display-italic text-[18px] text-inkMuted dark:text-creamMuted mt-1">${escapeHTML(p.subtitle)}</p>
+
+          <div class="mt-6 flex flex-wrap gap-1.5">
+            ${p.stack.map(s => `<span class="font-mono text-[11px] tracking-wide px-2.5 py-1 rounded-full border rule text-inkBody dark:text-cream/80">${escapeHTML(s)}</span>`).join('')}
+          </div>
+
+          <a href="https://${escapeHTML(p.link)}" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 mt-7 text-ink dark:text-cream text-[14px] font-medium editorial-link">
+            View on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+        <div class="col-span-12 md:col-span-6 md:border-l rule md:pl-10">
+          <p class="label text-inkMuted dark:text-creamMuted mb-4">What I built</p>
+          <ul class="space-y-3 text-[15px] text-inkBody dark:text-cream/80">
+            ${p.highlights.map(h => `
+              <li class="flex gap-3">
+                <span class="text-rust shrink-0 mt-1.5">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><rect x="4" y="0" width="2" height="10"/><rect x="0" y="4" width="10" height="2"/></svg>
+                </span>
+                <span>${escapeHTML(h)}</span>
+              </li>`).join('')}
+          </ul>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function renderWriting(items) {
+    const el = document.getElementById('writing-list');
+    el.innerHTML = items.map((w, i) => `
+      <a href="https://${escapeHTML(w.link)}" target="_blank" rel="noopener"
+         class="group bg-paperCard dark:bg-nightCard rounded-2xl p-7 border rule themed hover:border-rust/60 transition flex flex-col">
+        <div class="flex justify-between items-start mb-6">
+          <span class="label text-rust">${escapeHTML(w.topic)}</span>
+          <span class="num-marker text-inkMuted dark:text-creamMuted">${String(i+1).padStart(2,'0')}</span>
+        </div>
+        <h3 class="display text-[24px] md:text-[28px] text-ink dark:text-cream leading-[1.1] mb-4">
+          ${escapeHTML(w.title)}
+        </h3>
+        <p class="text-[14px] text-inkBody dark:text-cream/75 leading-relaxed flex-1">${escapeHTML(w.summary)}</p>
+        <div class="mt-6 pt-5 border-t rule flex items-center justify-between text-[13px] text-inkMuted dark:text-creamMuted">
+          <span>Read on Medium</span>
+          <svg class="group-hover:translate-x-1 transition-transform" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function renderPrinciples(items) {
+    const el = document.getElementById('principles-list');
+    el.innerHTML = items.map((p, i) => `
+      <li class="grid grid-cols-12 gap-4 py-2 border-t border-nightEdge pt-8">
+        <div class="col-span-2 md:col-span-2">
+          <span class="num text-rustLight text-[40px] md:text-[56px] leading-none">${String(i+1).padStart(2,'0')}</span>
+        </div>
+        <div class="col-span-10 md:col-span-10">
+          <h3 class="display text-[24px] md:text-[30px] text-cream leading-tight">${escapeHTML(p.title)}</h3>
+          <p class="mt-3 text-[15px] text-cream/75 leading-relaxed max-w-lg">${escapeHTML(p.body)}</p>
+        </div>
+      </li>
+    `).join('');
+  }
+
+  function renderSkills(skills) {
+    const el = document.getElementById('skills-grid');
+    el.innerHTML = skills.map(g => `
+      <div class="bg-paper dark:bg-night p-7 themed">
+        <p class="label text-rust mb-5">${escapeHTML(g.category)}</p>
+        <ul class="space-y-2.5">
+          ${g.items.map(it => `
+            <li class="flex items-baseline gap-3 text-[16px] text-ink dark:text-cream">
+              <span class="text-rust text-[10px]">●</span>
+              <span>${escapeHTML(it)}</span>
+            </li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  function renderFooter(data) {
+    document.getElementById('footer-education').innerHTML =
+      `${escapeHTML(data.education.degree)}<br><span class="text-creamMuted">${escapeHTML(data.education.school)} · GPA ${escapeHTML(data.education.gpa)}</span>`;
+    document.getElementById('footer-languages').innerHTML =
+      data.languages.map(l => `${escapeHTML(l.name)} <span class="text-creamMuted">(${escapeHTML(l.level)})</span>`).join('<br>');
+  }
+
+  // 3) Reveal-on-scroll
+  function initReveal() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('section').forEach(s => {
+      s.classList.add('reveal');
+      io.observe(s);
+    });
+  }
+
+  // 4) Boot
+  loadData().then(data => {
+    renderBindings(data);
+    renderStats(data.stats);
+    renderMarquee(data.skills);
+    renderExperience(data.experience);
+    renderProjects(data.projects);
+    renderWriting(data.writing);
+    renderPrinciples(data.principles);
+    renderSkills(data.skills);
+    renderFooter(data);
+    initReveal();
+  }).catch(err => {
+    console.error(err);
+    document.body.insertAdjacentHTML('afterbegin',
+      `<div class="bg-rust text-white p-4 text-center text-sm">Failed to load data.json: ${err.message}</div>`);
+  });
+</script>
+</body>
+</html>

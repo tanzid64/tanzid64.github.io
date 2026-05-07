@@ -1,0 +1,144 @@
+:root {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+}
+
+html,
+body,
+.themed {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+/* Hairline rule */
+.rule {
+  border-color: rgba(15, 0, 0, 0.12);
+}
+html.dark .rule {
+  border-color: rgba(240, 232, 214, 0.14);
+}
+
+/* Strong rule */
+.rule-strong {
+  border-color: #646262;
+}
+html.dark .rule-strong {
+  border-color: #5a5550;
+}
+
+/* ASCII bracket markers */
+.bk {
+  color: #7b87f5;
+  font-weight: 500;
+}
+
+/* Caret blink */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: -0.18em;
+  background: currentColor;
+  animation: blink 1.05s steps(1) infinite;
+  margin-left: 2px;
+}
+
+/* Underline reveal */
+.ulink {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.ulink:hover {
+  color: #7b87f5;
+  text-decoration-color: #7b87f5;
+  text-decoration-thickness: 2px;
+}
+
+/* Manpage section header */
+.h-section {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.h-display {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.35;
+}
+@media (min-width: 768px) {
+  .h-display {
+    font-size: 38px;
+  }
+}
+
+/* Tab-row underline */
+.tab-active {
+  color: #201d1d;
+  box-shadow: inset 0 -2px 0 #7b87f5;
+}
+html.dark .tab-active {
+  color: #e8e2d4;
+}
+
+/* TUI scanlines (very subtle) */
+.tui::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.015) 0 2px,
+    transparent 2px 4px
+  );
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Selection */
+::selection {
+  background: #7b87f5;
+  color: #fdfcfc;
+}
