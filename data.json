@@ -98,19 +98,19 @@
   ],
   "projects": [
     {
-      "name": "PingPanda",
-      "subtitle": "SaaS Website Monitoring Platform",
-      "stack": ["Next.js", "Prisma", "TanStack Query", "Webhooks", "Discord API"],
+      "name": "Griebs Properties",
+      "subtitle": "A real estate listing and management platform for Webbly Consulting Solutions.",
+      "stack": ["Next.js", "Laravel", "MySQL", "Tailwind CSS", "R2 Bucket"],
       "highlights": [
-        "Real-time monitoring platform for uptime, API health, and event tracking.",
-        "Secure API key system with request validation and rate control.",
-        "Webhook ingestion system for external integrations.",
-        "Discord bot integration for instant alerting and incident notifications.",
-        "Optimized data fetching and caching with Prisma and TanStack Query."
+        "Design and development of real estate listing and management features.",
+        "R2 Bucket integration for secure file storage.",
+        "Property data calculation and management.",
+        "Optimized database queries for efficient data retrieval.",
+        "VPS setup and host frontend and backend applications. And secured with Cloudflare."
       ],
-      "link": "https://github.com/tanzid64/ping-panda",
-      "year": "2025",
-      "category": "SaaS"
+      "link": "https://griebsproperties.com/",
+      "year": "2026",
+      "category": "Software Development"
     },
     {
       "name": "PDF Craft",
