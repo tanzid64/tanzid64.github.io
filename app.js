@@ -255,9 +255,38 @@ function initReveal() {
   );
   document.querySelectorAll("section").forEach((s) => {
     s.classList.add("reveal");
+
+    // Ensure sections already in or near the viewport are visible on first paint.
+    const rect = s.getBoundingClientRect();
+    const vh =
+      window.innerHeight || document.documentElement.clientHeight || 0;
+    if (rect.top < vh * 0.92) {
+      s.classList.add("in");
+      return;
+    }
+
     io.observe(s);
   });
 }
+
+function initScrollTop() {
+  const btn = document.getElementById("scroll-top");
+  if (!btn) return;
+
+  const threshold = 320;
+  const toggleVisibility = () => {
+    btn.classList.toggle("is-visible", window.scrollY > threshold);
+  };
+
+  window.addEventListener("scroll", toggleVisibility, { passive: true });
+  toggleVisibility();
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+initScrollTop();
 
 fetch("data.json")
   .then((r) => r.json())
