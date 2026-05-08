@@ -1,9 +1,9 @@
 {
   "profile": {
-    "name": "Md. Tanzid Haque",
+    "name": "Md Tanzid Haque",
     "title": "Software Developer",
     "tagline": "Full-stack engineer building scalable SaaS, ERP, and e-commerce systems with Laravel, React, and Next.js.",
-    "summary": "Full Stack Software Developer with 2+ years of experience building production-grade systems. Strong focus on performance optimization, clean architecture, and rapid product delivery. Experienced in modern AI-assisted development workflows — leveraging automation and developer tooling to ship faster while maintaining high-quality codebases.",
+    "summary": "Full Stack Software Developer with 3+ years of experience building production-grade systems. Strong focus on performance optimization, clean architecture, and rapid product delivery. Experienced in modern AI-assisted development workflows — leveraging automation and developer tooling to ship faster while maintaining high-quality codebases.",
     "location": "Dhaka, Bangladesh",
     "email": "tanzid3@gmail.com",
     "phone": "+880 17089-15045",
@@ -13,7 +13,7 @@
       "medium": "medium.com/@tanzid64",
       "linkedin": "linkedin.com/in/tanzid64"
     },
-    "yearsOfExperience": "2+",
+    "yearsOfExperience": "3+",
     "availability": "Open to work"
   },
   "stats": [
