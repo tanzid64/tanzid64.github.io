@@ -258,8 +258,7 @@ function initReveal() {
 
     // Ensure sections already in or near the viewport are visible on first paint.
     const rect = s.getBoundingClientRect();
-    const vh =
-      window.innerHeight || document.documentElement.clientHeight || 0;
+    const vh = window.innerHeight || document.documentElement.clientHeight || 0;
     if (rect.top < vh * 0.92) {
       s.classList.add("in");
       return;

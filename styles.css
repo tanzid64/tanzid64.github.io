@@ -9,6 +9,13 @@ body {
   font-family: "JetBrains Mono", monospace;
 }
 
+html:not(.dark) body {
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(0, 0, 0, 0.03), transparent 36%),
+    radial-gradient(circle at 90% 100%, rgba(0, 0, 0, 0.025), transparent 40%);
+  background-attachment: fixed;
+}
+
 html,
 body,
 .themed {
