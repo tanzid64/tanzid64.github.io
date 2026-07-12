@@ -53,7 +53,7 @@
       "role": "Laravel Developer",
       "company": "Kiwii IT",
       "location": "Dhaka",
-      "period": "Sep 2025 — Present",
+      "period": "Sep 2025 — June 2026",
       "current": true,
       "href": "https://kiwiiit.com/",
       "highlights": [
@@ -67,26 +67,12 @@
         "Managed production infrastructure, CI/CD pipelines, and VPS deployments."
       ]
     },
-    {
-      "role": "Junior Software Developer",
-      "company": "Consultech Solutions BD Ltd",
-      "location": "Dhaka",
-      "period": "Feb 2025 — Aug 2025",
-      "current": false,
-      "href": "https://www.consultechbd.com/",
-      "highlights": [
-        "Developed ERP modules with role-based access control and scalable architecture.",
-        "Built high-performance UI components handling datasets of 100k+ records.",
-        "Designed analytics dashboards for distributors and operational teams.",
-        "Implemented real-time updates and reporting systems.",
-        "Built internal chat system using Laravel Reverb."
-      ]
-    },
+        
     {
       "role": "Junior Software Developer",
       "company": "Digiwinners",
       "location": "Dhaka",
-      "period": "Jan 2024 — Jan 2025",
+      "period": "Jan 2024 — Sep 2025",
       "current": false,
       "href": "https://digiwinners.com/en",
       "highlights": [
