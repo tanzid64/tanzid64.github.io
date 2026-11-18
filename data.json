@@ -33,7 +33,14 @@
     },
     {
       "category": "Frontend",
-      "items": ["Inertia.js", "Tailwind CSS", "Shadcn UI", "Bootstrap", "TanStack Query/Table/Form", "React Hook Form"]
+      "items": [
+        "Inertia.js",
+        "Tailwind CSS",
+        "Shadcn UI",
+        "Bootstrap",
+        "TanStack Query/Table/Form",
+        "React Hook Form"
+      ]
     },
     {
       "category": "Databases",
@@ -45,16 +52,39 @@
     },
     {
       "category": "AI & Modern Dev",
-      "items": ["Laravel AI SDK", "OpenAI APIs", "AI-assisted workflows", "Vibe coding"]
+      "items": [
+        "Laravel AI SDK",
+        "OpenAI APIs",
+        "AI-assisted workflows",
+        "Vibe coding"
+      ]
     }
   ],
   "experience": [
+    {
+      "role": "Software Developer",
+      "company": "Data Limited (Savoy Icecream Factory Ltd)",
+      "location": "8th Floor, Navana Tower, Gulshan - 1, Dhaka",
+      "period": "July 2026 — Present",
+      "current": true,
+      "href": "https://data-ltd.com/",
+      "highlights": [
+        "AIROS ERP development: built features across the Laravel API and the React/TypeScript frontend.",
+        "Sales & Distribution module: distributors, modern trade customers, orders, invoices, delivery orders, sales returns, POS and outbound shipments.",
+        "Control Center module: users, HR, master data, organization setup and system settings, all redesigned on a shared workbench UI.",
+        "Enterprise-grade Finance module: collections, cash and bank verification, credit policies, base pricing and special pricing.",
+        "Multi-level approval workflows: staged change requests that can be sent back, rejected or approved, with approval roles and substitutes.",
+        "Optimized reports: paginated, generate-on-demand reports, background Excel/CSV exports and server-side PDF documents.",
+        "Access-based data visibility: users see only the stores, zones and customers they have been granted.",
+        "Permission-based access control: module, menu and action permissions, with bulk assignment across users."
+      ]
+    },
     {
       "role": "Laravel Developer",
       "company": "Kiwii IT",
       "location": "Dhaka",
       "period": "Sep 2025 — June 2026",
-      "current": true,
+      "current": false,
       "href": "https://kiwiiit.com/",
       "highlights": [
         "Designed and implemented scalable authentication systems using Sanctum and JWT.",
@@ -67,7 +97,7 @@
         "Managed production infrastructure, CI/CD pipelines, and VPS deployments."
       ]
     },
-        
+
     {
       "role": "Junior Software Developer",
       "company": "Digiwinners",
@@ -84,6 +114,43 @@
   ],
   "projects": [
     {
+      "name": "FBS",
+      "subtitle": "Faculty of Business Studies, University of Dhaka",
+      "stack": ["Laravel", "Livewire", "TailwindCSS", "MySQL", "VPS"],
+      "highlights": [
+        "FBS Website: a Laravel CMS for a university faculty, with content managed entirely from an admin panel.",
+        "Block-based page builder: a three-pane drag-and-build editor, a block registry and renderer, and record-aware blocks for detail pages.",
+        "Layout-driven detail pages for departments, programs and faculty, each overridable per record.",
+        "Admin-managed SEO and meta settings applied across all public pages.",
+        "Media library on Cloudflare R2 object storage.",
+        "Deployment pipelines: Docker deployment & CI/CD pipelines setup.",
+        "Security hardening: removed an obfuscated backdoor from the build config and added a ClamAV malware scan to CI.",
+        "Responsive public site, with test coverage for the block builder and page conversion."
+      ],
+      "link": "https://fbs.du.ac.bd/",
+      "year": "2026",
+      "category": "Software Development"
+    },
+    {
+      "name": "EMBA Admission",
+      "subtitle": "Executive MBA Admission system, Faculty of Business Studies, University of Dhaka",
+      "stack": ["Laravel", "Livewire", "TailwindCSS", "MySQL", "VPS"],
+      "highlights": [
+        "EMBA Admission Portal: built end to end, covering online application, payment, exam, viva, merit-based subject allocation and admission.",
+        "Grew paid applicants from 600–700 to 1,100–1,300 per intake, an increase of about 80%.",
+        "Integrated bKash payments with receipt PDFs, payment reconciliation and protection against duplicate-callback race conditions.",
+        "Automated the admission pipeline: Excel/CSV marks import, absence handling, configurable viva eligibility, capacity-based viva board assignment and seat reallocation rounds.",
+        "Built multi-channel notifications: OTP sign-up and login, templated email and SMS with bulk sending, delivery tracking and retries, and real-time Telegram alerts for admins.",
+        "Built an applicant support ticketing system with attachments, internal notes and live notification bells.",
+        "Built analytics and reporting: daily and hourly admission analytics, a drag-and-drop report builder, and Excel/CSV/PDF exports.",
+        "Built multi-batch admission cycles with per-batch accounts, bulk batch transfers and rollback, and role-based admin access with an impersonate-applicant mode.",
+        "Set up CI/CD to cPanel with GitHub Actions, scheduled queue workers, and malware scanning in CI."
+      ],
+      "link": "https://fbs.du.ac.bd/emba-admission/",
+      "year": "2026",
+      "category": "Software Development"
+    },
+    {
       "name": "Griebs Properties",
       "subtitle": "A real estate listing and management platform for Webbly Consulting Solutions.",
       "stack": ["Next.js", "Laravel", "MySQL", "Tailwind CSS", "R2 Bucket"],
@@ -99,24 +166,17 @@
       "category": "Software Development"
     },
     {
-      "name": "PDF Craft",
-      "subtitle": "AI-Powered PDF Chat SaaS",
-      "stack": ["Next.js", "OpenAI", "Stripe", "Vector DB", "React-PDF"],
-      "highlights": [
-        "AI-powered document chat using semantic search and embeddings.",
-        "Vector-based retrieval pipeline for accurate contextual responses.",
-        "Subscription billing and access control with Stripe.",
-        "Optimized large document parsing and rendering pipelines.",
-        "Secure API layer with usage limits and protected endpoints."
-      ],
-      "link": "https://github.com/tanzid64/pdf-craft",
-      "year": "2024",
-      "category": "AI / SaaS"
-    },
-    {
       "name": "Faith Journey Bangladesh",
       "subtitle": "A single vendor e-commerce platform for cloathing products in Bangladesh.",
-      "stack": ["Laravel", "Mysql", "Redis", "Next.js", "Tailwind CSS", "Inertia.js", "Shadcn UI"],
+      "stack": [
+        "Laravel",
+        "Mysql",
+        "Redis",
+        "Next.js",
+        "Tailwind CSS",
+        "Inertia.js",
+        "Shadcn UI"
+      ],
       "highlights": [
         "Home page builder.",
         "Product & Order management system with real-time updates. And order audit log with user activity tracking.",
