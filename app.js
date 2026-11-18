@@ -48,8 +48,8 @@ function renderHeroMeta(p) {
     .map(
       ([k, v]) => `
     <li class="border-t rule pt-2">
-      <p class="text-[12px] text-mute dark:text-nightMute"><span class="bk">[~]</span> ${k}</p>
-      <p class="text-[14px] text-ink dark:text-nightInk truncate">${escapeHTML(v)}</p>
+      <p class="text-[13px] text-mute dark:text-nightMute"><span class="bk">[~]</span> ${k}</p>
+      <p class="text-[15px] text-ink dark:text-nightInk truncate">${escapeHTML(v)}</p>
     </li>
   `,
     )
@@ -62,7 +62,7 @@ function renderStats(stats) {
       (s) => `
     <div class="bg-canvas dark:bg-nightBg p-5 themed">
       <div class="text-[36px] md:text-[44px] font-bold leading-none text-primary">${escapeHTML(s.value)}</div>
-      <div class="mt-3 text-[13px] text-mute dark:text-nightMute leading-snug">${escapeHTML(s.label)}</div>
+      <div class="mt-3 text-[14px] text-mute dark:text-nightMute leading-snug">${escapeHTML(s.label)}</div>
     </div>
   `,
     )
@@ -85,10 +85,10 @@ function renderExperience(jobs) {
       (j, i) => `
     <li class="border-b rule py-7 grid grid-cols-12 gap-4 md:gap-8">
       <div class="col-span-12 md:col-span-3">
-        <p class="text-[12px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(j.period)}</p>
+        <p class="text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(j.period)}</p>
         ${
           j.current
-            ? `<span class="inline-flex items-center gap-1.5 mt-1 text-[12px] text-primary">
+            ? `<span class="inline-flex items-center gap-1.5 mt-1 text-[13px] text-primary">
           <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>current
         </span>`
             : ""
@@ -98,8 +98,8 @@ function renderExperience(jobs) {
         <h3 class="text-[18px] font-bold text-ink dark:text-nightInk">
           ${escapeHTML(j.role)} <span class="text-mute dark:text-nightMute font-normal">@</span> ${j.href ? `<a href="${escapeHTML(j.href)}" target="_blank" rel="noopener noreferrer" class="text-primary ulink">${escapeHTML(j.company)}</a>` : `<span class="text-primary">${escapeHTML(j.company)}</span>`}
         </h3>
-        <p class="mt-1 text-[13px] text-mute dark:text-nightMute">${escapeHTML(j.location)}</p>
-        <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[14px] text-body dark:text-nightBody">
+        <p class="mt-1 text-[14px] text-mute dark:text-nightMute">${escapeHTML(j.location)}</p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[15px] text-body dark:text-nightBody">
           ${j.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
         </ul>
       </div>
@@ -146,19 +146,19 @@ function renderProjects(projects) {
       (p, i) => `
     <article data-cat="${escapeHTML(p.category.toUpperCase())}" class="bg-canvas dark:bg-nightBg p-6 md:p-8 grid grid-cols-12 gap-6 themed">
       <div class="col-span-12 md:col-span-4">
-        <p class="text-[12px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(p.category)} · ${escapeHTML(p.year)}</p>
+        <p class="text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(p.category)} · ${escapeHTML(p.year)}</p>
         <h3 class="mt-2 text-[24px] font-bold text-ink dark:text-nightInk leading-tight">${escapeHTML(p.name)}</h3>
-        <p class="mt-1 text-[14px] text-mute dark:text-nightMute">${escapeHTML(p.subtitle)}</p>
+        <p class="mt-1 text-[15px] text-mute dark:text-nightMute">${escapeHTML(p.subtitle)}</p>
         <div class="mt-5 flex flex-wrap gap-1.5">
-          ${p.stack.map((s) => `<span class="text-[11px] px-2 py-0.5 rounded-sm border rule">${escapeHTML(s)}</span>`).join("")}
+          ${p.stack.map((s) => `<span class="text-[12px] px-2 py-0.5 rounded-sm border rule">${escapeHTML(s)}</span>`).join("")}
         </div>
-        <a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-[13px] ulink">
+        <a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-[14px] ulink">
           <span class="bk">$</span> open ${escapeHTML(p.link)} <span aria-hidden="true">↗</span>
         </a>
       </div>
       <div class="col-span-12 md:col-span-8 md:border-l rule md:pl-8">
-        <p class="text-[12px] text-mute dark:text-nightMute mb-3">README.md</p>
-        <ul class="space-y-1.5 text-[14px] text-body dark:text-nightBody">
+        <p class="text-[13px] text-mute dark:text-nightMute mb-3">README.md</p>
+        <ul class="space-y-1.5 text-[15px] text-body dark:text-nightBody">
           ${p.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
         </ul>
       </div>
@@ -173,8 +173,8 @@ function renderSkills(skills) {
     .map(
       (g) => `
     <div class="bg-canvas dark:bg-nightBg p-6 themed">
-      <p class="text-[12px] text-primary font-medium mb-3">[~] ${escapeHTML(g.category.toLowerCase())}</p>
-      <p class="text-[14px] text-body dark:text-nightBody leading-[1.85]">
+      <p class="text-[13px] text-primary font-medium mb-3">[~] ${escapeHTML(g.category.toLowerCase())}</p>
+      <p class="text-[15px] text-body dark:text-nightBody leading-[1.85]">
         ${g.items.map((it) => escapeHTML(it)).join(' <span class="text-ash dark:text-nightMute">·</span> ')}
       </p>
     </div>
@@ -188,15 +188,15 @@ function renderWriting(items) {
     .map(
       (w, i) => `
     <li class="border-b rule py-5 grid grid-cols-12 gap-4">
-      <div class="col-span-12 md:col-span-2 text-[12px] text-mute dark:text-nightMute">
+      <div class="col-span-12 md:col-span-2 text-[13px] text-mute dark:text-nightMute">
         [${String(i + 1).padStart(2, "0")}] ${escapeHTML(w.topic)}
       </div>
       <div class="col-span-12 md:col-span-8">
         <h3 class="text-[16px] font-bold text-ink dark:text-nightInk">${escapeHTML(w.title)}</h3>
-        <p class="mt-1.5 text-[14px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
+        <p class="mt-1.5 text-[15px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
       </div>
       <div class="col-span-12 md:col-span-2 md:text-right">
-        <a href="${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[13px] ulink">
+        <a href="${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[14px] ulink">
           read.md <span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -213,12 +213,12 @@ function renderPrinciples(items) {
     <li class="border-b rule py-4">
       <details class="group">
         <summary class="flex items-baseline gap-3 cursor-pointer list-none">
-          <span class="bk text-[14px] group-open:hidden">[+]</span>
-          <span class="bk text-[14px] hidden group-open:inline">[−]</span>
-          <span class="text-[15px] font-medium text-ink dark:text-nightInk">${escapeHTML(p.title)}</span>
-          <span class="ml-auto text-[12px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}]</span>
+          <span class="bk text-[15px] group-open:hidden">[+]</span>
+          <span class="bk text-[15px] hidden group-open:inline">[−]</span>
+          <span class="text-[16px] font-medium text-ink dark:text-nightInk">${escapeHTML(p.title)}</span>
+          <span class="ml-auto text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}]</span>
         </summary>
-        <p class="mt-3 ml-7 text-[14px] text-body dark:text-nightBody max-w-2xl">${escapeHTML(p.body)}</p>
+        <p class="mt-3 ml-7 text-[15px] text-body dark:text-nightBody max-w-2xl">${escapeHTML(p.body)}</p>
       </details>
     </li>
   `,
@@ -228,9 +228,9 @@ function renderPrinciples(items) {
 
 function renderEducation(d) {
   document.getElementById("education-block").innerHTML = `
-    <p class="text-[15px] font-bold text-ink dark:text-nightInk">${escapeHTML(d.education.degree)}</p>
-    <p class="text-[13px] text-mute dark:text-nightMute mt-1">${escapeHTML(d.education.school)}</p>
-    <p class="text-[13px] text-mute dark:text-nightMute">GPA <span class="text-primary">${escapeHTML(d.education.gpa)}</span></p>
+    <p class="text-[16px] font-bold text-ink dark:text-nightInk">${escapeHTML(d.education.degree)}</p>
+    <p class="text-[14px] text-mute dark:text-nightMute mt-1">${escapeHTML(d.education.school)}</p>
+    <p class="text-[14px] text-mute dark:text-nightMute">GPA <span class="text-primary">${escapeHTML(d.education.gpa)}</span></p>
   `;
   document.getElementById("languages-block").innerHTML = d.languages
     .map(
