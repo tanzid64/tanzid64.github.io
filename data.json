@@ -17,7 +17,7 @@
     "availability": "Open to work"
   },
   "stats": [
-    { "value": "3+", "label": "Years shipping production code" },
+    { "value": "4+", "label": "Years shipping production code" },
     { "value": "3", "label": "Companies, ERP & SaaS focus" },
     { "value": "100k+", "label": "Records handled per UI" },
     { "value": "6×", "label": "Faster query response (3s → 500ms)" }
@@ -25,7 +25,7 @@
   "skills": [
     {
       "category": "Languages",
-      "items": ["PHP", "JavaScript", "TypeScript", "Python"]
+      "items": ["PHP", "JavaScript", "TypeScript", "Python", "GO"]
     },
     {
       "category": "Frameworks",
@@ -113,6 +113,33 @@
     }
   ],
   "projects": [
+    {
+      "name": "Lanka Express Agency Management System",
+      "subtitle": "Lanka Express, visa and immigration consultancy, Dhaka",
+      "stack": [
+        "Laravel",
+        "Inertia.js",
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "MySQL",
+        "mPDF",
+        "GitHub Actions"
+      ],
+      "highlights": [
+        "Built end to end for an international visa service and consultancy firm, combining an internal CRM with the public website.",
+        "Lead-to-visa pipeline: leads, meetings and minutes, conversion to customers, and visa cases with document checklists, tasks and deadlines.",
+        "Finance module: invoices with a draft-to-paid lifecycle, payments and refunds, aging and collections reports, and race-safe invoice and receipt numbering.",
+        "Branded PDF invoices, receipts and letters (NOC, salary certificate, pay slip, appointment letter) with QR-code verification.",
+        "Role- and permission-based access control with a full audit log and configurable master data.",
+        "Section-based page builder for public pages, with server-rendered SEO tags and a sitemap.",
+        "Public site: per-visa-type landing pages, a free assessment flow and WhatsApp lead capture.",
+        "Dashboard analytics for leads, cases and finance; CI/CD deploys to Hostinger with malware scanning in CI."
+      ],
+      "link": "https://lankaebd.com/",
+      "year": "2026",
+      "category": "Software Development"
+    },
     {
       "name": "FBS",
       "subtitle": "Faculty of Business Studies, University of Dhaka",
