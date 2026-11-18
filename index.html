@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
 
@@ -28,6 +28,7 @@
         theme: {
           extend: {
             fontFamily: {
+              sans: ["IBM Plex Sans", "ui-sans-serif", "system-ui", "sans-serif"],
               mono: [
                 "JetBrains Mono",
                 "IBM Plex Mono",
@@ -187,7 +188,7 @@
 
         <div class="mt-5 grid grid-cols-12 gap-6">
           <div
-            class="col-span-12 md:col-span-7 text-body dark:text-nightBody text-[16px] max-w-2xl"
+            class="col-span-12 md:col-span-7 font-sans text-body dark:text-nightBody text-[16px] max-w-2xl"
           >
             <p data-bind="profile.summary"></p>
           </div>
@@ -446,7 +447,7 @@
               Have a system that needs shipping?
               <span class="text-primary">→</span>
             </h3>
-            <p class="mt-5 text-body dark:text-nightBody max-w-xl text-[16px]">
+            <p class="mt-5 font-sans text-body dark:text-nightBody max-w-xl text-[16px]">
               Available for full-stack contract or full-time roles. Best for
               backend-heavy SaaS, ERP, and platform work — Laravel, Next.js,
               real-time systems.

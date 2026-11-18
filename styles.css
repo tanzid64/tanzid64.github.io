@@ -206,3 +206,8 @@ html.dark .scroll-top-btn {
     bottom: 1.5rem;
   }
 }
+
+/* Keep markers mono inside sans prose */
+.bk {
+  font-family: "JetBrains Mono", monospace;
+}

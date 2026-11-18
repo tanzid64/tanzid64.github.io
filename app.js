@@ -99,7 +99,7 @@ function renderExperience(jobs) {
           ${escapeHTML(j.role)} <span class="text-mute dark:text-nightMute font-normal">@</span> ${j.href ? `<a href="${escapeHTML(j.href)}" target="_blank" rel="noopener noreferrer" class="text-primary ulink">${escapeHTML(j.company)}</a>` : `<span class="text-primary">${escapeHTML(j.company)}</span>`}
         </h3>
         <p class="mt-1 text-[14px] text-mute dark:text-nightMute">${escapeHTML(j.location)}</p>
-        <ul class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[15px] text-body dark:text-nightBody">
+        <ul class="mt-4 font-sans grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[15px] text-body dark:text-nightBody">
           ${j.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
         </ul>
       </div>
@@ -148,7 +148,7 @@ function renderProjects(projects) {
       <div class="col-span-12 md:col-span-4">
         <p class="text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(p.category)} · ${escapeHTML(p.year)}</p>
         <h3 class="mt-2 text-[24px] font-bold text-ink dark:text-nightInk leading-tight">${escapeHTML(p.name)}</h3>
-        <p class="mt-1 text-[15px] text-mute dark:text-nightMute">${escapeHTML(p.subtitle)}</p>
+        <p class="mt-1 font-sans text-[15px] text-mute dark:text-nightMute">${escapeHTML(p.subtitle)}</p>
         <div class="mt-5 flex flex-wrap gap-1.5">
           ${p.stack.map((s) => `<span class="text-[12px] px-2 py-0.5 rounded-sm border rule">${escapeHTML(s)}</span>`).join("")}
         </div>
@@ -158,7 +158,7 @@ function renderProjects(projects) {
       </div>
       <div class="col-span-12 md:col-span-8 md:border-l rule md:pl-8">
         <p class="text-[13px] text-mute dark:text-nightMute mb-3">README.md</p>
-        <ul class="space-y-1.5 text-[15px] text-body dark:text-nightBody">
+        <ul class="space-y-1.5 font-sans text-[15px] text-body dark:text-nightBody">
           ${p.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
         </ul>
       </div>
@@ -193,7 +193,7 @@ function renderWriting(items) {
       </div>
       <div class="col-span-12 md:col-span-8">
         <h3 class="text-[16px] font-bold text-ink dark:text-nightInk">${escapeHTML(w.title)}</h3>
-        <p class="mt-1.5 text-[15px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
+        <p class="mt-1.5 font-sans text-[15px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
       </div>
       <div class="col-span-12 md:col-span-2 md:text-right">
         <a href="${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[14px] ulink">
@@ -218,7 +218,7 @@ function renderPrinciples(items) {
           <span class="text-[16px] font-medium text-ink dark:text-nightInk">${escapeHTML(p.title)}</span>
           <span class="ml-auto text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}]</span>
         </summary>
-        <p class="mt-3 ml-7 text-[15px] text-body dark:text-nightBody max-w-2xl">${escapeHTML(p.body)}</p>
+        <p class="mt-3 ml-7 font-sans text-[15px] text-body dark:text-nightBody max-w-2xl">${escapeHTML(p.body)}</p>
       </details>
     </li>
   `,
