@@ -288,6 +288,7 @@ details.more .points { margin-top: 10px; }
 .visit { font-weight: 500; font-size: 17px; color: var(--ink); display: inline-flex; align-items: center; gap: 8px; }
 .visit i { font-style: normal; width: 22px; height: 22px; border: 1.5px solid currentColor; border-radius: 50%; display: grid; place-items: center; font-size: 12px; }
 .visit:hover { color: var(--accent-text); }
+.visit.private, .visit.private:hover { color: var(--mute); cursor: default; }
 .project details.more { margin-top: 0; }
 .project details.more[open] { flex-basis: 100%; }
 .project .links { flex-wrap: wrap; }

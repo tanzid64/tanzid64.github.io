@@ -40,6 +40,14 @@ const pastel = (i) => `var(--p${(i % 5) + 1})`;
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const HOME_PROJECTS = 4;
 const gallery = (p) => (p.gallery && p.gallery.length ? p.gallery : [p.image]);
+// projects without a public site (private client work) get no outbound link
+const linkWrap = (p, cls, inner) => p.link
+  ? `<a class="${cls}" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${inner}</a>`
+  : `<div class="${cls}">${inner}</div>`;
+const LOCK = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+const visit = (p) => p.link
+  ? `<a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>`
+  : `<span class="visit private"><i>${LOCK}</i>Private client project</span>`;
 
 const svg = (d) => `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 const SERVICE_ICONS = [
@@ -123,15 +131,13 @@ function render(d) {
 
   set("projects-list", d.projects.slice(0, HOME_PROJECTS).map((p, i) => `
     <article class="project">
-      <a class="shot" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <img src="${esc(p.image)}" alt="" width="1200" height="625" loading="lazy" />
-      </a>
+      ${linkWrap(p, "shot", `<img src="${esc(p.image)}" alt="" width="1200" height="625" loading="lazy" />`)}
       <p class="meta">${pad(i)} · ${esc(p.year)}</p>
       <h3>${esc(p.name)}</h3>
       <p class="sub">${esc(p.subtitle)}</p>
       <div class="tags">${p.stack.map((s) => `<span class="tag">${esc(s)}</span>`).join("")}</div>
       <div class="links">
-        <a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>
+        ${visit(p)}
         <details class="more"><summary>What I built</summary>${points(p.highlights, 99)}</details>
       </div>
     </article>`).join(""));
@@ -149,9 +155,7 @@ function render(d) {
   set("all-projects", d.projects.map((p, i) => `
     <article class="row" id="${esc(slug(p.name))}">
       <div class="media" style="background:${pastel(i)}">
-        <a class="shot-main" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1">
-          <img src="${esc(gallery(p)[0])}" alt="${esc(p.name)} screenshot 1" width="1200" height="625" loading="${i < 2 ? "eager" : "lazy"}" />
-        </a>
+        ${linkWrap(p, "shot-main", `<img src="${esc(gallery(p)[0])}" alt="${esc(p.name)} ${p.link ? "screenshot" : "illustration"} 1" width="1200" height="625" loading="${i < 2 ? "eager" : "lazy"}" />`)}
         ${gallery(p).length > 1 ? `<div class="thumbs" aria-label="${esc(p.name)} screenshots">
           ${gallery(p).map((src, k) => `<button type="button" class="thumb" aria-pressed="${k === 0}" aria-label="Show screenshot ${k + 1}" data-src="${esc(src)}" data-alt="${esc(p.name)} screenshot ${k + 1}">
             <img src="${esc(src)}" alt="" width="1200" height="625" loading="lazy" />
@@ -162,7 +166,7 @@ function render(d) {
         <p class="meta">${pad(i)} · ${esc(p.year)} · ${esc(p.category)}</p>
         <h2>${esc(p.name)}</h2>
         <p class="sub">${esc(p.subtitle)}</p>
-        <a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>
+        ${visit(p)}
         <h3 class="row-label">What I built</h3>
         <ul class="points">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
         <h3 class="row-label">Tech stack</h3>
