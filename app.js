@@ -1,312 +1,202 @@
-// theme
-(function () {
-  const saved = localStorage.getItem("theme");
-  const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  document.documentElement.classList.toggle(
-    "dark",
-    saved ? saved === "dark" : sysDark,
-  );
-})();
 document.getElementById("theme-toggle").addEventListener("click", () => {
-  const r = document.documentElement;
-  r.classList.toggle("dark");
-  localStorage.setItem(
-    "theme",
-    r.classList.contains("dark") ? "dark" : "light",
-  );
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
 });
+document.getElementById("year").textContent = new Date().getFullYear();
 
-document.querySelector("[data-footer-year]").textContent =
-  new Date().getFullYear();
+// mobile menu
+const nav = document.querySelector(".nav");
+const menuBtn = document.getElementById("menu-btn");
+const setMenu = (open) => {
+  nav.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+};
+menuBtn.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+document.getElementById("nav-links").addEventListener("click", (e) => e.target.closest("a") && setMenu(false));
+document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
 
-const escapeHTML = (s) =>
-  String(s).replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
-const deepGet = (o, p) =>
-  p.split(".").reduce((a, k) => (a == null ? a : a[k]), o);
+// highlight the nav link of the section in view
+const navLinks = [...document.querySelectorAll(".nav-links a")];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    navLinks.forEach((a) => a.setAttribute("aria-current", a.hash === "#" + e.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+navLinks.forEach((a) => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
+spy.observe(document.querySelector(".hero-band")); // no id, so it clears the highlight at the top
 
-function renderBindings(d) {
+const esc = (s) =>
+  String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const deepGet = (o, p) => p.split(".").reduce((a, k) => (a == null ? a : a[k]), o);
+const pad = (i) => String(i + 1).padStart(2, "0");
+const host = (url) => new URL(url).hostname.replace(/^www\./, "");
+const set = (id, html) => (document.getElementById(id).innerHTML = html);
+const pastel = (i) => `var(--p${(i % 5) + 1})`;
+
+const svg = (d) => `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const SERVICE_ICONS = [
+  '<path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/>', // layers: ERP
+  '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 13h8M8 16h5"/>', // app window: SaaS
+  '<path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/>', // cart
+  '<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-5"/><path d="M8 18h.01M16 18h.01"/>', // gauge: performance
+];
+const STEP_ICONS = [
+  '<path d="M4 7h16M4 12h10M4 17h7"/><path d="m16 15 2 2 3-4"/>',
+  '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+  '<path d="M5 12h12M13 6l6 6-6 6"/>',
+  '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3"/>',
+];
+
+// first `n` points visible, the rest folded into a <details>
+const points = (items, n = 3) => {
+  const li = (h) => `<li>${esc(h)}</li>`;
+  const rest = items.slice(n);
+  return `<ul class="points">${items.slice(0, n).map(li).join("")}</ul>` +
+    (rest.length ? `<details class="more"><summary>${rest.length} more</summary><ul class="points">${rest.map(li).join("")}</ul></details>` : "");
+};
+
+function render(d) {
   document.querySelectorAll("[data-bind]").forEach((el) => {
-    const v = deepGet(d, el.getAttribute("data-bind"));
+    const v = deepGet(d, el.dataset.bind);
     if (v != null) el.textContent = v;
   });
-}
 
-function renderHeroMeta(p) {
-  const rows = [
-    ["role", p.title],
-    ["location", p.location],
-    ["email", p.email],
-    ["github", "@tanzid64"],
-  ];
-  document.getElementById("hero-meta").innerHTML = rows
-    .map(
-      ([k, v]) => `
-    <li class="border-t rule pt-2">
-      <p class="text-[13px] text-mute dark:text-nightMute"><span class="bk">[~]</span> ${k}</p>
-      <p class="text-[15px] text-ink dark:text-nightInk truncate">${escapeHTML(v)}</p>
-    </li>
-  `,
-    )
-    .join("");
-}
+  const mail = `mailto:${d.profile.email}`;
+  ["mail-btn", "mail-link", "foot-mail"].forEach((id) => (document.getElementById(id).href = mail));
+  ["mail-link", "foot-mail"].forEach((id) => (document.getElementById(id).textContent = d.profile.email));
 
-function renderStats(stats) {
-  document.getElementById("stats").innerHTML = stats
-    .map(
-      (s) => `
-    <div class="bg-canvas dark:bg-nightBg p-5 themed">
-      <div class="text-[36px] md:text-[44px] font-bold leading-none text-primary">${escapeHTML(s.value)}</div>
-      <div class="mt-3 text-[14px] text-mute dark:text-nightMute leading-snug">${escapeHTML(s.label)}</div>
-    </div>
-  `,
-    )
-    .join("");
-}
+  set("services-list", d.services.map((s, i) => `
+    <div class="service" style="background:${pastel(i)}">
+      <span class="ico">${svg(SERVICE_ICONS[i % SERVICE_ICONS.length])}</span>
+      <div><h3>${esc(s.title)}</h3><p>${esc(s.body)}</p></div>
+    </div>`).join(""));
 
-function renderMarquee(skills) {
-  const all = skills.flatMap((g) => g.items);
-  const block = all
-    .map((s) => `<span><span class="bk">[+]</span> ${escapeHTML(s)}</span>`)
-    .join('<span class="text-ash dark:text-nightMute">·</span>');
-  document.getElementById("marquee-track").innerHTML =
-    block + '<span class="text-ash dark:text-nightMute">·</span>' + block;
-}
+  // "Data Limited (Savoy Icecream Factory Ltd)" -> ["Data Limited", "Savoy Icecream Factory Ltd"]
+  const coParts = (c) => { const m = c.match(/^(.*?)\s*\((.*)\)$/); return m ? [m[1], m[2]] : [c, ""]; };
+  const period = (p) => p.replace(" — ", " – ");
 
-function renderExperience(jobs) {
-  const el = document.getElementById("experience");
-  el.innerHTML = jobs
-    .map(
-      (j, i) => `
-    <li class="border-b rule py-7 grid grid-cols-12 gap-4 md:gap-8">
-      <div class="col-span-12 md:col-span-3">
-        <p class="text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(j.period)}</p>
-        ${
-          j.current
-            ? `<span class="inline-flex items-center gap-1.5 mt-1 text-[13px] text-primary">
-          <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>current
-        </span>`
-            : ""
-        }
-      </div>
-      <div class="col-span-12 md:col-span-9">
-        <h3 class="text-[18px] font-bold text-ink dark:text-nightInk">
-          ${escapeHTML(j.role)} <span class="text-mute dark:text-nightMute font-normal">@</span> ${j.href ? `<a href="${escapeHTML(j.href)}" target="_blank" rel="noopener noreferrer" class="text-primary ulink">${escapeHTML(j.company)}</a>` : `<span class="text-primary">${escapeHTML(j.company)}</span>`}
-        </h3>
-        <p class="mt-1 text-[14px] text-mute dark:text-nightMute">${escapeHTML(j.location)}</p>
-        <ul class="mt-4 font-sans grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-[15px] text-body dark:text-nightBody">
-          ${j.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
-        </ul>
-      </div>
-    </li>
-  `,
-    )
-    .join("");
-}
+  set("job-tabs", d.experience.map((j, i) => `
+    <button class="job-tab" role="tab" type="button" id="job-tab-${i}" aria-controls="job-panel" aria-selected="false" data-i="${i}">
+      <span class="n">${pad(i)}</span>
+      <b>${esc(coParts(j.company)[0])}</b>
+      <small>${esc(j.role)} · ${esc(period(j.period).replace(/ \d{4}/g, (y) => " '" + y.slice(-2)))}</small>
+    </button>`).join(""));
 
-function renderProjectTabs(projects) {
-  const cats = [
-    "ALL",
-    ...new Set(projects.map((p) => p.category.toUpperCase())),
-  ];
-  const el = document.getElementById("proj-tabs");
-  el.innerHTML = cats
-    .map(
-      (c, i) => `
-    <button data-cat="${escapeHTML(c)}" class="proj-tab px-4 py-2 ${i === 0 ? "tab-active" : "text-mute dark:text-nightMute"}">${escapeHTML(c)}</button>
-  `,
-    )
-    .join("");
-  el.querySelectorAll(".proj-tab").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      el.querySelectorAll(".proj-tab").forEach((b) =>
-        b.classList.remove("tab-active"),
-      );
-      el.querySelectorAll(".proj-tab").forEach((b) =>
-        b.classList.add("text-mute", "dark:text-nightMute"),
-      );
-      btn.classList.add("tab-active");
-      btn.classList.remove("text-mute", "dark:text-nightMute");
-      const c = btn.dataset.cat;
-      document.querySelectorAll("#projects-list > article").forEach((art) => {
-        art.style.display = c === "ALL" || art.dataset.cat === c ? "" : "none";
-      });
-    });
-  });
-}
-
-function renderProjects(projects) {
-  document.getElementById("projects-list").innerHTML = projects
-    .map(
-      (p, i) => `
-    <article data-cat="${escapeHTML(p.category.toUpperCase())}" class="bg-canvas dark:bg-nightBg p-6 md:p-8 grid grid-cols-12 gap-6 themed">
-      <div class="col-span-12 md:col-span-4">
-        <p class="text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}] ${escapeHTML(p.category)} · ${escapeHTML(p.year)}</p>
-        <h3 class="mt-2 text-[24px] font-bold text-ink dark:text-nightInk leading-tight">${escapeHTML(p.name)}</h3>
-        <p class="mt-1 font-sans text-[15px] text-mute dark:text-nightMute">${escapeHTML(p.subtitle)}</p>
-        <div class="mt-5 flex flex-wrap gap-1.5">
-          ${p.stack.map((s) => `<span class="text-[12px] px-2 py-0.5 rounded-sm border rule">${escapeHTML(s)}</span>`).join("")}
+  const showJob = (i) => {
+    const j = d.experience[i];
+    const [co, parent] = coParts(j.company);
+    document.querySelectorAll(".job-tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.i == i));
+    const panel = document.getElementById("job-panel");
+    panel.setAttribute("aria-labelledby", `job-tab-${i}`);
+    panel.innerHTML = `
+      <article class="job-card" style="background:${pastel(i + 1)}">
+        <div class="job-top">
+          <span class="chip-date">${esc(period(j.period))}</span>
+          ${j.current ? `<span class="chip-now"><span class="dot"></span>Current role</span>` : ""}
         </div>
-        <a href="${escapeHTML(p.link)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 text-[14px] ulink">
-          <span class="bk">$</span> open ${escapeHTML(p.link)} <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <div class="col-span-12 md:col-span-8 md:border-l rule md:pl-8">
-        <p class="text-[13px] text-mute dark:text-nightMute mb-3">README.md</p>
-        <ul class="space-y-1.5 font-sans text-[15px] text-body dark:text-nightBody">
-          ${p.highlights.map((h) => `<li><span class="bk">[+]</span> ${escapeHTML(h)}</li>`).join("")}
-        </ul>
-      </div>
-    </article>
-  `,
-    )
-    .join("");
-}
-
-function renderSkills(skills) {
-  document.getElementById("skills-grid").innerHTML = skills
-    .map(
-      (g) => `
-    <div class="bg-canvas dark:bg-nightBg p-6 themed">
-      <p class="text-[13px] text-primary font-medium mb-3">[~] ${escapeHTML(g.category.toLowerCase())}</p>
-      <p class="text-[15px] text-body dark:text-nightBody leading-[1.85]">
-        ${g.items.map((it) => escapeHTML(it)).join(' <span class="text-ash dark:text-nightMute">·</span> ')}
-      </p>
-    </div>
-  `,
-    )
-    .join("");
-}
-
-function renderWriting(items) {
-  document.getElementById("writing-list").innerHTML = items
-    .map(
-      (w, i) => `
-    <li class="border-b rule py-5 grid grid-cols-12 gap-4">
-      <div class="col-span-12 md:col-span-2 text-[13px] text-mute dark:text-nightMute">
-        [${String(i + 1).padStart(2, "0")}] ${escapeHTML(w.topic)}
-      </div>
-      <div class="col-span-12 md:col-span-8">
-        <h3 class="text-[16px] font-bold text-ink dark:text-nightInk">${escapeHTML(w.title)}</h3>
-        <p class="mt-1.5 font-sans text-[15px] text-body dark:text-nightBody">${escapeHTML(w.summary)}</p>
-      </div>
-      <div class="col-span-12 md:col-span-2 md:text-right">
-        <a href="${escapeHTML(w.link)}" target="_blank" rel="noopener" class="text-[14px] ulink">
-          read.md <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </li>
-  `,
-    )
-    .join("");
-}
-
-function renderPrinciples(items) {
-  document.getElementById("principles-list").innerHTML = items
-    .map(
-      (p, i) => `
-    <li class="border-b rule py-4">
-      <details class="group">
-        <summary class="flex items-baseline gap-3 cursor-pointer list-none">
-          <span class="bk text-[15px] group-open:hidden">[+]</span>
-          <span class="bk text-[15px] hidden group-open:inline">[−]</span>
-          <span class="text-[16px] font-medium text-ink dark:text-nightInk">${escapeHTML(p.title)}</span>
-          <span class="ml-auto text-[13px] text-mute dark:text-nightMute">[${String(i + 1).padStart(2, "0")}]</span>
-        </summary>
-        <p class="mt-3 ml-7 font-sans text-[15px] text-body dark:text-nightBody max-w-2xl">${escapeHTML(p.body)}</p>
-      </details>
-    </li>
-  `,
-    )
-    .join("");
-}
-
-function renderEducation(d) {
-  document.getElementById("education-block").innerHTML = `
-    <p class="text-[16px] font-bold text-ink dark:text-nightInk">${escapeHTML(d.education.degree)}</p>
-    <p class="text-[14px] text-mute dark:text-nightMute mt-1">${escapeHTML(d.education.school)}</p>
-    <p class="text-[14px] text-mute dark:text-nightMute">GPA <span class="text-primary">${escapeHTML(d.education.gpa)}</span></p>
-  `;
-  document.getElementById("languages-block").innerHTML = d.languages
-    .map(
-      (l) => `
-    <li class="flex items-baseline gap-2"><span class="bk">[+]</span> <span class="text-ink dark:text-nightInk font-medium">${escapeHTML(l.name)}</span> <span class="text-mute dark:text-nightMute">— ${escapeHTML(l.level)}</span></li>
-  `,
-    )
-    .join("");
-}
-
-function initReveal() {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
-  );
-  document.querySelectorAll("section").forEach((s) => {
-    s.classList.add("reveal");
-
-    // Ensure sections already in or near the viewport are visible on first paint.
-    const rect = s.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight || 0;
-    if (rect.top < vh * 0.92) {
-      s.classList.add("in");
-      return;
-    }
-
-    io.observe(s);
-  });
-}
-
-function initScrollTop() {
-  const btn = document.getElementById("scroll-top");
-  if (!btn) return;
-
-  const threshold = 320;
-  const toggleVisibility = () => {
-    btn.classList.toggle("is-visible", window.scrollY > threshold);
+        <h3>${esc(j.role)}</h3>
+        <p class="job-co">${j.href ? `<a href="${esc(j.href)}" target="_blank" rel="noopener">${esc(co)} ↗</a>` : esc(co)}
+          ${parent ? `<small>(${esc(parent)})</small>` : ""} · <small>${esc(j.location)}</small></p>
+        <ul class="points">${j.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+      </article>`;
   };
+  document.getElementById("job-tabs").addEventListener("click", (e) => {
+    const t = e.target.closest(".job-tab");
+    if (t) showJob(+t.dataset.i);
+  });
+  showJob(0);
 
-  window.addEventListener("scroll", toggleVisibility, { passive: true });
-  toggleVisibility();
+  set("edu", `<p class="label">Education</p><b>${esc(d.education.degree)}</b>${esc(d.education.school)} · GPA ${esc(d.education.gpa)}<br>${d.languages.map((l) => `${esc(l.name)} (${esc(l.level)})`).join(" · ")}`);
 
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  set("stats", d.stats.map((s) => `<div><dt>${esc(s.value)}</dt><dd>${esc(s.label)}</dd></div>`).join(""));
+
+  set("projects-list", d.projects.map((p, i) => `
+    <article class="project">
+      <a class="shot" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <img src="${esc(p.image)}" alt="" width="1200" height="625" loading="lazy" />
+      </a>
+      <p class="meta">${pad(i)} · ${esc(p.year)}</p>
+      <h3>${esc(p.name)}</h3>
+      <p class="sub">${esc(p.subtitle)}</p>
+      <div class="tags">${p.stack.map((s) => `<span class="tag">${esc(s)}</span>`).join("")}</div>
+      <div class="links">
+        <a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>
+        <details class="more"><summary>What I built</summary>${points(p.highlights, 99)}</details>
+      </div>
+    </article>`).join(""));
+
+  set("principles-list", d.principles.map((p, i) => `
+    <li style="background:${pastel(i + 1)}">
+      <span class="n">${pad(i)}.</span>
+      <span class="ico">${svg(STEP_ICONS[i % STEP_ICONS.length])}</span>
+      <h3>${esc(p.title)}</h3><p>${esc(p.body)}</p>
+    </li>`).join(""));
+
+  const tools = d.skills.flatMap((g) => g.items)
+    .map((t) => `<span>${esc(t)}<svg><use href="#ast"/></svg></span>`).join("");
+  set("marquee-track", tools + tools); // doubled so the loop is seamless
+
+  set("writing-list", d.writing.map((w) => `
+    <a class="post" href="${esc(w.link)}" target="_blank" rel="noopener">
+      <span class="topic">${esc(w.topic)}</span>
+      <h3>${esc(w.title)}</h3>
+      <p>${esc(w.summary)}</p>
+      <span class="visit">Read on Medium <i aria-hidden="true">↗</i></span>
+    </a>`).join(""));
+}
+
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// fade-up on scroll, staggered among siblings
+function initReveal() {
+  if (calm) return;
+  const targets = document.querySelectorAll(
+    ".head, .service, .job-side, #job-panel, .project, .steps li, .tools-title, .post, .contact > :not(.doodle), .foot-top > *"
+  );
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.classList.add("in");
+      // drop the reveal classes afterwards so hover transforms work normally
+      el.addEventListener("transitionend", () => el.classList.remove("reveal", "in"), { once: true });
+      io.unobserve(el);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  targets.forEach((el) => {
+    const i = [...el.parentElement.children].indexOf(el);
+    el.style.setProperty("--d", `${(i % 4) * 90}ms`);
+    el.classList.add("reveal");
+    io.observe(el);
   });
 }
 
-initScrollTop();
+// count stats up from 0 when the card scrolls into view ("100k+" -> 0k+ ... 100k+)
+function initCountUp() {
+  const items = [...document.querySelectorAll("#stats dt")];
+  if (calm || !items.length) return;
+  const parsed = items.map((el) => { const m = el.textContent.match(/^(\d+)(.*)$/); return m && { el, n: +m[1], rest: m[2] }; }).filter(Boolean);
+  parsed.forEach((p) => (p.el.textContent = "0" + p.rest));
+  const io = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    io.disconnect();
+    const t0 = performance.now(), dur = 1400;
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur), ease = 1 - Math.pow(1 - k, 3);
+      parsed.forEach((p) => (p.el.textContent = Math.round(p.n * ease) + p.rest));
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.4 });
+  io.observe(document.getElementById("stats"));
+}
 
 fetch("data.json")
   .then((r) => r.json())
-  .then((data) => {
-    renderBindings(data);
-    renderHeroMeta(data.profile);
-    renderStats(data.stats);
-    renderMarquee(data.skills);
-    renderExperience(data.experience);
-    renderProjectTabs(data.projects);
-    renderProjects(data.projects);
-    renderSkills(data.skills);
-    renderWriting(data.writing);
-    renderPrinciples(data.principles);
-    renderEducation(data);
-    initReveal();
-  })
+  .then((d) => { render(d); initReveal(); initCountUp(); })
   .catch((err) => {
     console.error(err);
-    document.body.insertAdjacentHTML(
-      "afterbegin",
-      `<div class="bg-primary text-canvas p-3 text-center text-sm">Failed to load data.json: ${err.message}</div>`,
-    );
+    document.body.insertAdjacentHTML("afterbegin", `<p style="padding:12px;text-align:center">Failed to load data.json: ${esc(err.message)}</p>`);
   });

@@ -2,8 +2,8 @@
   "profile": {
     "name": "Md Tanzid Haque",
     "title": "Software Developer",
-    "tagline": "Full-stack engineer building scalable SaaS, ERP, and e-commerce systems with Laravel, React, and Next.js.",
-    "summary": "Full Stack Software Developer with 3+ years of experience building production-grade systems. Strong focus on performance optimization, clean architecture, and rapid product delivery. Experienced in modern AI-assisted development workflows — leveraging automation and developer tooling to ship faster while maintaining high-quality codebases.",
+    "tagline": "I turn manual business processes like sales, approvals, finance and reporting into reliable software, so your team spends less time on paperwork and more on the work that grows the business.",
+    "summary": "Software Engineer with 4+ years of experience building production systems that automate how businesses run: ERP modules, multi-level approval workflows, payments and reporting. I focus on clean architecture, fast and reliable software, and delivery you can plan around, using AI-assisted tooling to move quickly without compromising code quality.",
     "location": "Dhaka, Bangladesh",
     "email": "tanzid3@gmail.com",
     "phone": "+880 17089-15045",
@@ -13,23 +13,65 @@
       "medium": "medium.com/@tanzid64",
       "linkedin": "linkedin.com/in/tanzid64"
     },
-    "yearsOfExperience": "3+",
+    "yearsOfExperience": "4+",
     "availability": "Open to work"
   },
   "stats": [
-    { "value": "4+", "label": "Years shipping production code" },
-    { "value": "3", "label": "Companies, ERP & SaaS focus" },
-    { "value": "100k+", "label": "Records handled per UI" },
-    { "value": "6×", "label": "Faster query response (3s → 500ms)" }
+    {
+      "value": "4+",
+      "label": "Years shipping production code"
+    },
+    {
+      "value": "3",
+      "label": "Companies, ERP & SaaS focus"
+    },
+    {
+      "value": "100k+",
+      "label": "Records handled per UI"
+    },
+    {
+      "value": "6×",
+      "label": "Faster query response (3s → 500ms)"
+    }
+  ],
+  "services": [
+    {
+      "title": "ERP & business systems",
+      "body": "Sales, finance, HR and approval workflows with role-based access, audit trails and reports that stay fast at 100k+ records."
+    },
+    {
+      "title": "SaaS & web applications",
+      "body": "Laravel and Next.js products from first schema to production, with queues, real-time updates and clean APIs."
+    },
+    {
+      "title": "E-commerce & payments",
+      "body": "Storefronts and admin panels with SSLCommerz, bKash and Stripe, order tracking and payment reconciliation."
+    },
+    {
+      "title": "Performance & deployment",
+      "body": "Query tuning, Redis caching, CI/CD pipelines, VPS and Docker deployments, and malware scanning in CI."
+    }
   ],
   "skills": [
     {
       "category": "Languages",
-      "items": ["PHP", "JavaScript", "TypeScript", "Python", "GO"]
+      "items": [
+        "PHP",
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "GO"
+      ]
     },
     {
       "category": "Frameworks",
-      "items": ["Laravel", "React", "Next.js", "Tanstack Start", "Django"]
+      "items": [
+        "Laravel",
+        "React",
+        "Next.js",
+        "Tanstack Start",
+        "Django"
+      ]
     },
     {
       "category": "Frontend",
@@ -44,11 +86,23 @@
     },
     {
       "category": "Databases",
-      "items": ["MySQL", "PostgreSQL", "MongoDB", "Redis"]
+      "items": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis"
+      ]
     },
     {
       "category": "Tools & DevOps",
-      "items": ["Git", "VPS", "GitHub Actions", "Postman", "Docker", "CI/CD"]
+      "items": [
+        "Git",
+        "VPS",
+        "GitHub Actions",
+        "Postman",
+        "Docker",
+        "CI/CD"
+      ]
     },
     {
       "category": "AI & Modern Dev",
@@ -97,7 +151,6 @@
         "Managed production infrastructure, CI/CD pipelines, and VPS deployments."
       ]
     },
-
     {
       "role": "Junior Software Developer",
       "company": "Digiwinners",
@@ -138,12 +191,19 @@
       ],
       "link": "https://lankaebd.com/",
       "year": "2026",
-      "category": "Software Development"
+      "category": "Software Development",
+      "image": "images/projects/lanka.webp"
     },
     {
       "name": "FBS",
       "subtitle": "Faculty of Business Studies, University of Dhaka",
-      "stack": ["Laravel", "Livewire", "TailwindCSS", "MySQL", "VPS"],
+      "stack": [
+        "Laravel",
+        "Livewire",
+        "TailwindCSS",
+        "MySQL",
+        "VPS"
+      ],
       "highlights": [
         "FBS Website: a Laravel CMS for a university faculty, with content managed entirely from an admin panel.",
         "Block-based page builder: a three-pane drag-and-build editor, a block registry and renderer, and record-aware blocks for detail pages.",
@@ -156,12 +216,19 @@
       ],
       "link": "https://fbs.du.ac.bd/",
       "year": "2026",
-      "category": "Software Development"
+      "category": "Software Development",
+      "image": "images/projects/fbs.webp"
     },
     {
       "name": "EMBA Admission",
       "subtitle": "Executive MBA Admission system, Faculty of Business Studies, University of Dhaka",
-      "stack": ["Laravel", "Livewire", "TailwindCSS", "MySQL", "VPS"],
+      "stack": [
+        "Laravel",
+        "Livewire",
+        "TailwindCSS",
+        "MySQL",
+        "VPS"
+      ],
       "highlights": [
         "EMBA Admission Portal: built end to end, covering online application, payment, exam, viva, merit-based subject allocation and admission.",
         "Grew paid applicants from 600–700 to 1,100–1,300 per intake, an increase of about 80%.",
@@ -175,12 +242,19 @@
       ],
       "link": "https://fbs.du.ac.bd/emba-admission/",
       "year": "2026",
-      "category": "Software Development"
+      "category": "Software Development",
+      "image": "images/projects/emba.webp"
     },
     {
       "name": "Griebs Properties",
       "subtitle": "A real estate listing and management platform for Webbly Consulting Solutions.",
-      "stack": ["Next.js", "Laravel", "MySQL", "Tailwind CSS", "R2 Bucket"],
+      "stack": [
+        "Next.js",
+        "Laravel",
+        "MySQL",
+        "Tailwind CSS",
+        "R2 Bucket"
+      ],
       "highlights": [
         "Design and development of real estate listing and management features.",
         "R2 Bucket integration for secure file storage.",
@@ -190,7 +264,8 @@
       ],
       "link": "https://griebsproperties.com/",
       "year": "2026",
-      "category": "Software Development"
+      "category": "Software Development",
+      "image": "images/projects/griebs.webp"
     },
     {
       "name": "Faith Journey Bangladesh",
@@ -213,7 +288,8 @@
       ],
       "link": "https://faithjourneybd.com/",
       "year": "2026",
-      "category": "Software Development"
+      "category": "Software Development",
+      "image": "images/projects/faith-journey.webp"
     }
   ],
   "writing": [
@@ -260,7 +336,13 @@
     "gpa": "3.49 / 4.00"
   },
   "languages": [
-    { "name": "Bangla", "level": "Native" },
-    { "name": "English", "level": "Academic" }
+    {
+      "name": "Bangla",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Academic"
+    }
   ]
 }
