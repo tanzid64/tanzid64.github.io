@@ -192,7 +192,12 @@
       "link": "https://lankaebd.com/",
       "year": "2026",
       "category": "Software Development",
-      "image": "images/projects/lanka.webp"
+      "image": "images/projects/lanka.webp",
+      "gallery": [
+        "images/projects/lanka.webp",
+        "images/projects/lanka-2.webp",
+        "images/projects/lanka-3.webp"
+      ]
     },
     {
       "name": "FBS",
@@ -217,7 +222,12 @@
       "link": "https://fbs.du.ac.bd/",
       "year": "2026",
       "category": "Software Development",
-      "image": "images/projects/fbs.webp"
+      "image": "images/projects/fbs.webp",
+      "gallery": [
+        "images/projects/fbs.webp",
+        "images/projects/fbs-2.webp",
+        "images/projects/fbs-3.webp"
+      ]
     },
     {
       "name": "EMBA Admission",
@@ -243,7 +253,12 @@
       "link": "https://fbs.du.ac.bd/emba-admission/",
       "year": "2026",
       "category": "Software Development",
-      "image": "images/projects/emba.webp"
+      "image": "images/projects/emba.webp",
+      "gallery": [
+        "images/projects/emba.webp",
+        "images/projects/emba-2.webp",
+        "images/projects/emba-3.webp"
+      ]
     },
     {
       "name": "Griebs Properties",
@@ -265,7 +280,12 @@
       "link": "https://griebsproperties.com/",
       "year": "2026",
       "category": "Software Development",
-      "image": "images/projects/griebs.webp"
+      "image": "images/projects/griebs.webp",
+      "gallery": [
+        "images/projects/griebs.webp",
+        "images/projects/griebs-2.webp",
+        "images/projects/griebs-3.webp"
+      ]
     },
     {
       "name": "Faith Journey Bangladesh",
@@ -289,7 +309,12 @@
       "link": "https://faithjourneybd.com/",
       "year": "2026",
       "category": "Software Development",
-      "image": "images/projects/faith-journey.webp"
+      "image": "images/projects/faith-journey.webp",
+      "gallery": [
+        "images/projects/faith-journey.webp",
+        "images/projects/faith-journey-2.webp",
+        "images/projects/faith-journey-3.webp"
+      ]
     }
   ],
   "writing": [
