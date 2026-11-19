@@ -17,23 +17,29 @@ document.getElementById("nav-links").addEventListener("click", (e) => e.target.c
 document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
 
 // highlight the nav link of the section in view
-const navLinks = [...document.querySelectorAll(".nav-links a")];
-const spy = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    navLinks.forEach((a) => a.setAttribute("aria-current", a.hash === "#" + e.target.id));
-  });
-}, { rootMargin: "-45% 0px -50% 0px" });
-navLinks.forEach((a) => { const s = document.querySelector(a.hash); if (s) spy.observe(s); });
-spy.observe(document.querySelector(".hero-band")); // no id, so it clears the highlight at the top
+const heroBand = document.querySelector(".hero-band");
+if (heroBand) {
+  const navLinks = [...document.querySelectorAll(".nav-links a")];
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      navLinks.forEach((a) => a.setAttribute("aria-current", a.hash === "#" + e.target.id));
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  navLinks.forEach((a) => { const s = a.hash && document.querySelector(a.hash); if (s) spy.observe(s); });
+  spy.observe(heroBand); // no id, so it clears the highlight at the top
+}
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const deepGet = (o, p) => p.split(".").reduce((a, k) => (a == null ? a : a[k]), o);
 const pad = (i) => String(i + 1).padStart(2, "0");
 const host = (url) => new URL(url).hostname.replace(/^www\./, "");
-const set = (id, html) => (document.getElementById(id).innerHTML = html);
+const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
 const pastel = (i) => `var(--p${(i % 5) + 1})`;
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const HOME_PROJECTS = 4;
+const gallery = (p) => (p.gallery && p.gallery.length ? p.gallery : [p.image]);
 
 const svg = (d) => `<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 const SERVICE_ICONS = [
@@ -64,8 +70,8 @@ function render(d) {
   });
 
   const mail = `mailto:${d.profile.email}`;
-  ["mail-btn", "mail-link", "foot-mail"].forEach((id) => (document.getElementById(id).href = mail));
-  ["mail-link", "foot-mail"].forEach((id) => (document.getElementById(id).textContent = d.profile.email));
+  document.querySelectorAll("#mail-btn, #mail-link, #foot-mail").forEach((el) => (el.href = mail));
+  document.querySelectorAll("#mail-link, #foot-mail").forEach((el) => (el.textContent = d.profile.email));
 
   set("services-list", d.services.map((s, i) => `
     <div class="service" style="background:${pastel(i)}">
@@ -102,17 +108,20 @@ function render(d) {
         <ul class="points">${j.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
       </article>`;
   };
-  document.getElementById("job-tabs").addEventListener("click", (e) => {
-    const t = e.target.closest(".job-tab");
-    if (t) showJob(+t.dataset.i);
-  });
-  showJob(0);
+  const jobTabs = document.getElementById("job-tabs");
+  if (jobTabs) {
+    jobTabs.addEventListener("click", (e) => {
+      const t = e.target.closest(".job-tab");
+      if (t) showJob(+t.dataset.i);
+    });
+    showJob(0);
+  }
 
   set("edu", `<p class="label">Education</p><b>${esc(d.education.degree)}</b>${esc(d.education.school)} · GPA ${esc(d.education.gpa)}<br>${d.languages.map((l) => `${esc(l.name)} (${esc(l.level)})`).join(" · ")}`);
 
   set("stats", d.stats.map((s) => `<div><dt>${esc(s.value)}</dt><dd>${esc(s.label)}</dd></div>`).join(""));
 
-  set("projects-list", d.projects.map((p, i) => `
+  set("projects-list", d.projects.slice(0, HOME_PROJECTS).map((p, i) => `
     <article class="project">
       <a class="shot" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
         <img src="${esc(p.image)}" alt="" width="1200" height="625" loading="lazy" />
@@ -124,6 +133,40 @@ function render(d) {
       <div class="links">
         <a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>
         <details class="more"><summary>What I built</summary>${points(p.highlights, 99)}</details>
+      </div>
+    </article>`).join(""));
+
+  const allRows = document.getElementById("all-projects");
+  if (allRows) allRows.addEventListener("click", (e) => {
+    const t = e.target.closest(".thumb");
+    if (!t) return;
+    const media = t.closest(".media"), main = media.querySelector(".shot-main img");
+    main.src = t.dataset.src;
+    main.alt = t.dataset.alt;
+    media.querySelectorAll(".thumb").forEach((b) => b.setAttribute("aria-pressed", b === t));
+  });
+  set("project-count", `${d.projects.length} projects · ${[...new Set(d.projects.map((p) => p.year))].join(", ")}`);
+  set("all-projects", d.projects.map((p, i) => `
+    <article class="row" id="${esc(slug(p.name))}">
+      <div class="media" style="background:${pastel(i)}">
+        <a class="shot-main" href="${esc(p.link)}" target="_blank" rel="noopener" tabindex="-1">
+          <img src="${esc(gallery(p)[0])}" alt="${esc(p.name)} screenshot 1" width="1200" height="625" loading="${i < 2 ? "eager" : "lazy"}" />
+        </a>
+        ${gallery(p).length > 1 ? `<div class="thumbs" aria-label="${esc(p.name)} screenshots">
+          ${gallery(p).map((src, k) => `<button type="button" class="thumb" aria-pressed="${k === 0}" aria-label="Show screenshot ${k + 1}" data-src="${esc(src)}" data-alt="${esc(p.name)} screenshot ${k + 1}">
+            <img src="${esc(src)}" alt="" width="1200" height="625" loading="lazy" />
+          </button>`).join("")}
+        </div>` : ""}
+      </div>
+      <div class="row-body">
+        <p class="meta">${pad(i)} · ${esc(p.year)} · ${esc(p.category)}</p>
+        <h2>${esc(p.name)}</h2>
+        <p class="sub">${esc(p.subtitle)}</p>
+        <a class="visit" href="${esc(p.link)}" target="_blank" rel="noopener">Visit ${esc(host(p.link))} <i aria-hidden="true">↗</i></a>
+        <h3 class="row-label">What I built</h3>
+        <ul class="points">${p.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+        <h3 class="row-label">Tech stack</h3>
+        <div class="tags">${p.stack.map((s) => `<span class="tag">${esc(s)}</span>`).join("")}</div>
       </div>
     </article>`).join(""));
 
@@ -153,7 +196,7 @@ const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function initReveal() {
   if (calm) return;
   const targets = document.querySelectorAll(
-    ".head, .service, .job-side, #job-panel, .project, .steps li, .tools-title, .post, .contact > :not(.doodle), .foot-top > *"
+    ".head, .page-head > :not(.doodle), .row, .service, .job-side, #job-panel, .project, .steps li, .tools-title, .post, .contact > :not(.doodle), .foot-top > *"
   );
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
