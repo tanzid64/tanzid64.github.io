@@ -167,6 +167,41 @@
   ],
   "projects": [
     {
+      "name": "AI Customer Support Platform",
+      "subtitle": "WhatsApp Business API and Messenger support desk with AI auto-replies, a web app and a Flutter Android app, for a B2B e-commerce company.",
+      "stack": [
+        "Go",
+        "Vue 3",
+        "TypeScript",
+        "PostgreSQL",
+        "Redis",
+        "WhatsApp Cloud API",
+        "Messenger API",
+        "Flutter",
+        "Riverpod",
+        "Firebase (FCM)",
+        "Cloudflare R2",
+        "Docker"
+      ],
+      "highlights": [
+        "Built on an open-source Go WhatsApp Business platform and adapted into a single-company support desk: live chat over WebSockets, agent assignment, canned responses, SLA tracking and analytics.",
+        "AI automation: an AI assistant (OpenAI, Anthropic, Google or DeepSeek) answers queued chats, pauses as soon as an agent replies, and hands off to a person on request or when a customer sends a photo or file.",
+        "Facebook Messenger channel with its own inbox, history sync, reactions and read receipts, plus AI moderation of Page comments with spam and fraud detection.",
+        "Native Android app in Flutter and Riverpod: realtime chat with read ticks, reactions, internal notes, templates, a transfers queue with SLA badges, and Google sign-in.",
+        "Mobile backend: bearer-token auth, native Google sign-in and push notifications through Firebase Cloud Messaging and OneSignal, with taps opening the right conversation.",
+        "WhatsApp-style image editor in the chat composer (crop, rotate, draw, text, blur), covered by end-to-end tests.",
+        "Media on Cloudflare R2 served through a CDN; Docker builds deployed with Coolify and Nginx, with malware scanning in CI."
+      ],
+      "link": null,
+      "private": true,
+      "image": "images/projects/support-desk.svg",
+      "gallery": [
+        "images/projects/support-desk.svg"
+      ],
+      "year": "2026",
+      "category": "Business Automation"
+    },
+    {
       "name": "Lanka Express Agency Management System",
       "subtitle": "Lanka Express, visa and immigration consultancy, Dhaka",
       "stack": [

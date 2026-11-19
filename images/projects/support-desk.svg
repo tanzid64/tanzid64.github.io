@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 625" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <!-- Illustration of the private WhatsApp support desk (not a screenshot) -->
+  <rect width="1200" height="625" fill="#e2eff7"/>
+  <g fill="none" stroke="#13283a" stroke-width="2" stroke-linecap="round" opacity=".55">
+    <path d="M1110 60c2 14 12 24 26 26-14 2-24 12-26 26-2-14-12-24-26-26 14-2 24-12 26-26z"/>
+    <path d="M40 590c40-10 80-10 130-2M60 608c30-6 60-7 90-3"/>
+  </g>
+
+  <!-- desktop app window -->
+  <rect x="70" y="70" width="800" height="490" rx="18" fill="#ffffff" stroke="#13283a" stroke-width="2.5"/>
+  <path d="M70 120h800" stroke="#13283a" stroke-width="2"/>
+  <circle cx="100" cy="95" r="7" fill="#ee6a4d"/><circle cx="122" cy="95" r="7" fill="#f7c948"/><circle cx="144" cy="95" r="7" fill="#3fb37f"/>
+  <text x="470" y="101" text-anchor="middle" font-size="16" font-weight="600" fill="#13283a">Support inbox</text>
+
+  <!-- conversation list -->
+  <path d="M320 120v440" stroke="#13283a" stroke-width="1.5" opacity=".25"/>
+  <g font-size="14" fill="#13283a">
+    <rect x="86" y="136" width="218" height="66" rx="10" fill="#fde7df"/>
+    <circle cx="116" cy="169" r="17" fill="#ee6a4d"/><text x="116" y="174" text-anchor="middle" fill="#fff" font-weight="700" font-size="13">RK</text>
+    <text x="142" y="163" font-weight="600">Rahim K.</text><text x="142" y="183" fill="#5a6c7e" font-size="12.5">Where is my order?</text>
+    <rect x="252" y="152" width="38" height="18" rx="9" fill="#13283a"/><text x="271" y="165" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">AI</text>
+
+    <circle cx="116" cy="241" r="17" fill="#9cc8e4"/><text x="116" y="246" text-anchor="middle" fill="#13283a" font-weight="700" font-size="13">SA</text>
+    <text x="142" y="235" font-weight="600">Sadia A.</text><text x="142" y="255" fill="#5a6c7e" font-size="12.5">Invoice for last week</text>
+    <circle cx="282" cy="241" r="9" fill="#3fb37f"/><text x="282" y="245.5" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">2</text>
+
+    <circle cx="116" cy="311" r="17" fill="#ddf4ea" stroke="#13283a" stroke-width="1"/><text x="116" y="316" text-anchor="middle" fill="#13283a" font-weight="700" font-size="13">MT</text>
+    <text x="142" y="305" font-weight="600">Mitu Traders</text><text x="142" y="325" fill="#5a6c7e" font-size="12.5">Bulk price for 200 pcs</text>
+
+    <circle cx="116" cy="381" r="17" fill="#ece6fb" stroke="#13283a" stroke-width="1"/><text x="116" y="386" text-anchor="middle" fill="#13283a" font-weight="700" font-size="13">NH</text>
+    <text x="142" y="375" font-weight="600">Nayeem H.</text><text x="142" y="395" fill="#5a6c7e" font-size="12.5">Sent a photo</text>
+    <rect x="236" y="362" width="54" height="18" rx="9" fill="#fde7df" stroke="#ee6a4d"/><text x="263" y="375" text-anchor="middle" fill="#b33c22" font-size="11" font-weight="700">AGENT</text>
+
+    <circle cx="116" cy="451" r="17" fill="#f7eedc" stroke="#13283a" stroke-width="1"/><text x="116" y="456" text-anchor="middle" fill="#13283a" font-weight="700" font-size="13">FB</text>
+    <text x="142" y="445" font-weight="600">Messenger lead</text><text x="142" y="465" fill="#5a6c7e" font-size="12.5">Is COD available?</text>
+  </g>
+
+  <!-- chat pane -->
+  <g font-size="14.5">
+    <text x="345" y="152" font-size="15" font-weight="700" fill="#13283a">Rahim K.</text>
+    <text x="345" y="172" font-size="12" fill="#5a6c7e">WhatsApp · AI assistant replying</text>
+    <rect x="345" y="194" width="300" height="56" rx="14" fill="#f1f5f8"/>
+    <text x="362" y="218" fill="#13283a">Hi, where is my order #4821?</text>
+    <text x="362" y="238" fill="#5a6c7e" font-size="12">10:42</text>
+
+    <rect x="485" y="266" width="365" height="78" rx="14" fill="#ddf4ea"/>
+    <rect x="502" y="280" width="28" height="16" rx="8" fill="#13283a"/><text x="516" y="292" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">AI</text>
+    <text x="538" y="293" fill="#13283a">Your order shipped today and</text>
+    <text x="502" y="315" fill="#13283a">arrives in 2 days. Track it here: link</text>
+    <text x="802" y="334" fill="#5a6c7e" font-size="12">10:42 ✓✓</text>
+
+    <rect x="345" y="360" width="250" height="44" rx="14" fill="#f1f5f8"/>
+    <text x="362" y="387" fill="#13283a">Can I talk to a person?</text>
+
+    <rect x="345" y="418" width="505" height="34" rx="10" fill="#fde7df"/>
+    <text x="597" y="440" text-anchor="middle" font-size="13" fill="#b33c22" font-weight="600">Handed to agent · AI paused · SLA 5 min</text>
+
+    <rect x="345" y="492" width="505" height="48" rx="12" fill="#fff" stroke="#13283a" stroke-width="1.5"/>
+    <text x="365" y="521" fill="#8b9cad">Type a reply or /shortcut…</text>
+    <circle cx="824" cy="516" r="16" fill="#13283a"/><path d="M817 516h13m-5-6 6 6-6 6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- phone (Flutter app) -->
+  <rect x="880" y="120" width="250" height="440" rx="34" fill="#13283a"/>
+  <rect x="892" y="134" width="226" height="412" rx="24" fill="#ffffff"/>
+  <rect x="975" y="142" width="60" height="8" rx="4" fill="#13283a"/>
+  <g font-size="12.5">
+    <text x="910" y="182" font-size="15" font-weight="700" fill="#13283a">Transfers</text>
+    <rect x="910" y="194" width="58" height="22" rx="11" fill="#13283a"/><text x="939" y="209" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Queue</text>
+    <text x="996" y="209" text-anchor="middle" fill="#5a6c7e" font-size="11">My</text>
+    <text x="1040" y="209" text-anchor="middle" fill="#5a6c7e" font-size="11">History</text>
+    <rect x="906" y="228" width="198" height="62" rx="12" fill="#fde7df"/>
+    <text x="920" y="252" font-weight="600" fill="#13283a">Nayeem H.</text>
+    <text x="920" y="272" fill="#5a6c7e">Sent a photo</text>
+    <rect x="1048" y="242" width="46" height="18" rx="9" fill="#ee6a4d"/><text x="1071" y="255" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">2 min</text>
+    <rect x="906" y="300" width="198" height="62" rx="12" fill="#e2eff7"/>
+    <text x="920" y="324" font-weight="600" fill="#13283a">Rahim K.</text>
+    <text x="920" y="344" fill="#5a6c7e">Asked for a person</text>
+    <rect x="1048" y="314" width="46" height="18" rx="9" fill="#13283a"/><text x="1071" y="327" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">4 min</text>
+    <rect x="906" y="372" width="198" height="62" rx="12" fill="#ddf4ea"/>
+    <text x="920" y="396" font-weight="600" fill="#13283a">AI chatbot</text>
+    <text x="920" y="416" fill="#5a6c7e">Active · 86 chats today</text>
+    <rect x="1066" y="388" width="28" height="16" rx="8" fill="#3fb37f"/><circle cx="1086" cy="396" r="6" fill="#fff"/>
+    <!-- push notification -->
+    <rect x="904" y="452" width="202" height="76" rx="14" fill="#13283a"/>
+    <text x="918" y="476" fill="#9cc8e4" font-size="11" font-weight="700">NEW TRANSFER</text>
+    <text x="918" y="496" fill="#fff" font-weight="600">Nayeem H. needs an agent</text>
+    <text x="918" y="514" fill="#a9bccb" font-size="11.5">Tap to open the chat</text>
+  </g>
+
+  <text x="1130" y="600" text-anchor="end" font-size="13" fill="#5a6c7e">Illustration · private client project</text>
+</svg>
