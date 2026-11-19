@@ -204,7 +204,12 @@ function initReveal() {
       const el = e.target;
       el.classList.add("in");
       // drop the reveal classes afterwards so hover transforms work normally
-      el.addEventListener("transitionend", () => el.classList.remove("reveal", "in"), { once: true });
+      const done = (ev) => {
+        if (ev.target !== el || ev.propertyName !== "opacity") return; // ignore child and underline transitions
+        el.classList.remove("reveal", "in");
+        el.removeEventListener("transitionend", done);
+      };
+      el.addEventListener("transitionend", done);
       io.unobserve(el);
     });
   }, { rootMargin: "0px 0px -8% 0px" });

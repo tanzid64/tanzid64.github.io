@@ -1,3 +1,11 @@
+/* Excalifont (Excalidraw's handwritten font, OFL-1.1), Latin subset, pinned on jsDelivr */
+@font-face {
+  font-family: "Excalifont";
+  src: url("https://cdn.jsdelivr.net/npm/@excalidraw/excalidraw@0.18.1/dist/prod/fonts/Excalifont/Excalifont-Regular-a88b72a24fb54c9f94e3b5fdaa7481c9.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+20-7e, U+a0-a3, U+a5-a6, U+a8-ab, U+ad-b1, U+b4, U+b6-b8, U+ba-ff, U+131, U+152-153, U+2bc, U+2c6, U+2da, U+2dc, U+2013-2014, U+2018-201a, U+201c-201e, U+2020, U+2022, U+2024-2026, U+2030, U+2039-203a, U+20ac, U+2122, U+2212;
+}
+
 :root {
   --page: #ffffff;
   --band: #e6e4ff;
@@ -453,3 +461,24 @@ html.dark .footer { background: #0b0a11; border-top: 1.5px solid var(--ink); }
 @keyframes floatB { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(-4deg) translateY(10px); } }
 @keyframes twinkle { 0%, 100% { transform: scale(1) rotate(0); opacity: 1; } 50% { transform: scale(.82) rotate(12deg); opacity: .7; } }
 @keyframes drift { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+
+/* handwritten titles (only one weight exists, so no faux bold) */
+h1, h2, .hero h1, .page-head h1, .head h2, .contact h2, .row h2 {
+  font-family: "Excalifont", "IBM Plex Sans", system-ui, sans-serif;
+  font-weight: 400; letter-spacing: 0;
+}
+.hero h1 { font-size: clamp(36px, 4.3vw, 58px); line-height: 1.15; }
+
+/* hand-drawn underline under section titles (same stroke as the hero swoosh) */
+.head h2, .contact h2, .page-head h1 { position: relative; padding-bottom: .42em; }
+.head h2::after, .contact h2::after, .page-head h1::after {
+  content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: min(72%, 440px); height: .34em; background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 14c80-7 190-9 292-6M50 21c50-4 110-6 170-4' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M4 14c80-7 190-9 292-6M50 21c50-4 110-6 170-4' fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* draws left to right while its section fades in */
+  .js .reveal h2::after, .js h2.reveal::after, .js h1.reveal::after { clip-path: inset(0 100% 0 0); }
+  .js .reveal.in h2::after, .js h2.reveal.in::after, .js h1.reveal.in::after { clip-path: inset(0 0 0 0); transition: clip-path .55s .15s ease-out; }
+}
