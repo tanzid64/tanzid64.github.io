@@ -181,6 +181,8 @@ html.dark .i-sun { display: block; }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding-top: 140px; padding-bottom: 56px; gap: 56px; }
   .hero-art { justify-self: center; width: min(100%, 380px); }
+  .hero-text { display: grid; justify-items: center; text-align: center; }
+  .hero-text .btn-row { justify-content: center; }
   .badge { left: -4%; width: 112px; height: 112px; }
   .d-waves { right: -20px; }
 }
